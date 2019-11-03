@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body,
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="baidu.css" />
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="baidu">
+			<ul id="list">
+				<li>
+					<div></div>
+					<span>泡沫</span>
+					<span>邓紫棋</span>
+				</li>
+				<li>
+					<div></div>
+					<span>说爱你</span>
+					<span>蔡依林</span>
+				</li>
+				<li>
+					<div></div>
+					<span>稻香</span>
+					<span>周杰伦</span>
+				</li>
+				<li>
+					<div></div>
+					<span>我的梦</span>
+					<span>张靓颖</span>
+				</li>
+				<li>
+					<div></div>
+					<span>怎么说我不爱你</span>
+					<span>萧敬腾</span>
+				</li>
+				<li>
+					<div>️</div>
+					<span>无处安放</span>
+					<span>白若溪</span>
+				</li>
+			</ul>
+			<div class="select">
+				<span class="selectAll" id="all"><span>全选</span></span>
+				<div class="others">
+					<span><em></em>收藏</span>
+					<span><em></em>添加</span>
+					<span><em></em>删除</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		let musicLists = document.querySelectorAll('#list li');
+		let box = document.querySelectorAll('#list div');
+		let all = document.getElementById('all')
+		console.log(all);
+
+		console.log(box);
+
+
+
+		for (let i = 0; i < musicLists.length; i++) {
+			let bg = (i % 2 == 0) ? 'pink' : 'lightblue';
+			musicLists[i].style.backgroundColor = bg;
+			musicLists[i].myColor = bg;
+			musicLists[i].onmouseover = function () {
+				this.style.backgroundColor = 'gray';
+			}
+			musicLists[i].onmouseout = function () {
+
+				this.style.backgroundColor = bg;
+				if (box[i].innerText === '√') {
+					musicLists[i].style.backgroundColor = 'gray';
+				}
+			}
+			
+			let ary = [];
+			box.forEach((item,i)=>{
+			let onoff = false;
+			box[i].onclick = function () {
+			
+				
+			if (onoff) {
+				box[i].innerText = '';
+			 if(box[i].innerText === ''){
+              ary.pop();
+			  all.innerText = ''
+				 }
+
+			}
+			else {
+				box[i].innerText = '√';
+	            if(box[i].innerText === '√'){
+					ary.push(1);
+					console.log(ary.length);
+					
+				}
+			if(ary.length== box.length){
+				all.innerText = '√';}
+			}
+			onoff = !onoff;
+			}
+			
+		})
+			
+		
+		}
+ let onoff = true;
+ all.onclick =function(){
+	if(onoff ){
+	box.forEach((item,i )=> {
+		item.innerText = '√';
+		all.innerText = '√';
+		musicLists[i].style.backgroundColor ='gray';	
+	});
+
+	console.log(onoff);
+	
+	}
+	else{
+		box.forEach((item,i )=> {
+		item.innerText = '';
+		all.innerText = '';
+		musicLists[i].style.backgroundColor =bg = (i % 2 == 0) ? 'pink' : 'lightblue';
+	});
+	}
+	onoff = !onoff;
+	console.log(onoff);
+
+}
+  
+   console.log(box);
+   let ary = [];
+   box.forEach((item,i) => {
+	
+	 
+	   
+   });
+
+	</script>
+</body>
+
+</html>

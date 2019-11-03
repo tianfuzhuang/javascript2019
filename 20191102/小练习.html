@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>小练习</title>
+</head>
+
+<body>
+    <script>
+        + function () {
+            /*  
+                1.形参赋值
+                2.变量提升：
+                    a = function a() {}
+                    b = function b() {}
+                    var c;
+            */
+            console.log(a) //=>function a() {}
+            var a = 5;
+            function a() {}
+            console.log(a) //=>5
+            function b() {}
+            b = 6
+            console.log(b) //=>6
+            var c = d = b // c = 6 ;window.d = 6
+        }()
+        console.log(d) //=>6
+        // console.log(c) //c在函数内拿不到，报错
+      

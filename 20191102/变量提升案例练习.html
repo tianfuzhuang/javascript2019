@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量提升案例练习</title>
+</head>
+<body>
+   <script>
+   
+   function a(){
+        alert(1);
+    }
+    a(); //333
+    var a = function (){alert(a);}
+    alert(a);// function (){alert(a);}
+    var a = 30;
+    alert(a);//30
+    var b = function(a){
+        var a = 50;
+        alert(a);
+    }
+    b(a);//50
+    alert(a);//30
+    function a(){
+        alert(333);
+    }
+    alert(a);//30
+
+//分析一波:
+/* 
+首先:经过pk 剩下:var b; function a(){
+        alert(333);
+    }
+    在逐行从上到下执行代码
+    //第20行a能获得函数内 var a = 50
+    //第21行函数外获取不到函数内的变量
+
+ */
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   //第三题
+      function a(){
+        alert(1);
+    }
+    a(); 
+    var a = function (){alert(a);}
+    alert(a);
+    var a = 30;
+    alert(a);
+    var b = function(a){
+        var a = 50;
+        alert(a);
+    }
+    b(a);
+    alert(a);
+    function a(){
+        alert(333);
+    }
+    alert(a);
+  分析   
+    
+    
+    </script> 
+</body>
+</html>

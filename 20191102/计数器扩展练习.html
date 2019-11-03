@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计数器案例练习</title>
+    <style>
+    #btn1,#btn3{
+        width: 30px;
+        height: 20px;
+        vertical-align: bottom;
+    }
+    #btn2{
+        width:60px ;
+        height: 20px;
+        vertical-align: bottom;
+    }
+    #money{
+        width: 20px;
+        height: 20px;
+        font-size: 5px;
+    }
+    
+    </style>
+</head>
+<body>
+    <button id="btn1">-</button>
+    <button id="btn2">0</button>
+    <button id="btn3">+</button>
+    <input type="text" placeholder="输入单价" id="money"> <button id="btn4">元</button>
+   
+    
+    <button id="btn5">清空购物车</button>
+
+<script>
+   var i = btn2.innerText;
+    btn3.onclick =function(){
+      i++;
+      btn2.innerText = i;
+      btn4.innerText = i*money.value;
+    }
+  btn1.onclick = function () {
+     if(i>0){
+         i--;
+         btn2.innerText = i;
+         btn4.innerText = i*money.value;
+     }
+  }
+
+  btn5.onclick = function(){
+    btn2.innerText = 0;
+    btn4.innerText = 0;
+  }
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

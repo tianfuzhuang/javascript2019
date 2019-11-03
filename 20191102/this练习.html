@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+        /*   function fn(){
+             console.log(this);//document 
+                }
+             document.onclick = function(){
+                fn();
+                };      */            
+            /*     document.onclick = 
+                (function(){
+                console.log(this);//自执行函数this指代window 
+                    return fn 
+                })(); */
+ 
+/*   document.onclick = (function(){
+     console.log(this); //window
+        return fn;
+    })(); */
+    //函数自执行 返回的fn 赋值给document.onclick
+     document.onclick =  function fn(){
+        console.log(this); //document
+    }  
+
+/* 
+ function fn(){
+        console.log(this); //document
+    }  
+document.onclick = function(){
+    fn();   
+ }
+ */
+            </script> 
+</body>
+</html>

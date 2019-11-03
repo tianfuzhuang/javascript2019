@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包选项卡练习</title>
+</head>
+<body>
+    <button id="btn1">1</button>
+    <button id="btn2">2</button>
+    <button id="btn3">3</button>
+    <script>
+    const btns = document.querySelectorAll('button');
+     for (let i = 0; i < btns.length; i++) {
+        ;(function(aa){
+            btns[i].onclick = function(){
+                alert(aa);
+            }
+        })(i);
+         
+     } 
+        
+        
+        
+   </script>
+</body>
+</html>
