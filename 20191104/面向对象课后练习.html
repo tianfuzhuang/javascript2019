@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+//构造一个人;
+function  Person(name,sex,age){
+  
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+       
+        }
+        Person.prototype.run= function(){
+            console.log("坚持敲代码")
+    }
+  
+    let person1 =new Person("zhuangge","sex",28);
+  
+
+console.log(person1.run)
+
+
+</script>
+</body>
+</html>
