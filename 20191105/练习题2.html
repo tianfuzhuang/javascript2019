@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /*   pk
+            预解析
+            Foo = function() {}  
+            getName = function() {}
+            var a,b,c
+        */
+
+        function Foo() {
+            getName = function () { console.log(1); }; //函数内没有声明getName，相当于window.getName=function(){console.log(1);}
+            return this;
+        }
+        Foo.getName = function () { console.log(2); };
+        Foo.prototype.getName = function () { console.log(3); };
+        var getName = function () { console.log(4); };
+        function getName() { console.log(5); };
+        Foo.getName(); // 2
+        getName();   // 4
+        Foo().getName(); // 1 =>Foo执行后，getName赋值为函数function(){console.log(1);}，执行结果为1
+        getName(); //1
+        var a = new Foo.getName();    // 2    a = Foo.getName{} //先看Foo.getName()，后new；Foo下的getName的实例，即function (){console.log(2);}的实例
+        var b = new Foo().getName();   // 3   b = undefined //先看new Foo()，后.getName()；函数Foo实例下的getName执行，实例自身没getName，顺原型链找函数原型->function (){console.log(3);}，执行后输出3;没有return，b=undefined
+        var c = new new Foo().getName(); // 3 c = new Foo{}.getName() =>Foo.prototype.getName{}；函数Foo的实例下的getName的实例
+        console.log(a, b, c);
+    </script>
+</body>
+
+</html>
