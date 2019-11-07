@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手写new</title>
+</head>
+<body>
+    <script>
+    function New(fn,...ary){
+        let obj = {};//实例
+        let callback = fn.call(obj,...ary);//把构造函数的this改成实例
+        //使实例的原型链等于构造函数的原型
+        obj.__proto__ = fn.prototype;
+        //要么是个对象 要么是个函数
+     /*    if(callback !==null&&typeof callback)
+    */
+    if(callback !== null && typeof callback === 'object' || typeof callback === 'function'){
+            return callback;
+        }
+        return obj;
+    } 
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

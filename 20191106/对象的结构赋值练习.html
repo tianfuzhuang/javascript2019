@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            name: 'Peter',
+            age: 30,
+            interest: 'swimming'
+
+        }
+
+        // let {name,age} = obj;
+        // console.log(name);//'Peter'
+        // let {name:mingzi,age:nianling} = obj;
+        // console.log(mingzi,nianling);//Peter 30
+        //给获取的结果设置默认值
+        let {
+            aihao = 'playbasketball'
+        } = obj;
+        console.log(aihao);//'playbasketball'
+        console.log(obj);
+     
+
+
+
+
+    </script>
+</body>
+
+</html>

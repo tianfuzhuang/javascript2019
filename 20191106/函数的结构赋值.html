@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function move({x = 0,y = 0} = { }){
+    return [x,y];
+}
+console.log(move({x : 3,y : 4})); //[3,4]
+console.log(move({x : 3})); //[3,0]
+console.log(move({})); //[0,0]
+console.log(move()); //[0,0]
+ 
+// 分析：
+//1、先来看一下 {x = 0,y = 0} = { },只要调用 move 函数 没有传递参数的时候才会执行{x = 0,y = 0} = { } 这一行代码，只要传递了参数 这行代码是不会执行，
+//2、接下来，第三个输出，传入的参数是一个空 {}，是不执行 {x = 0,y = 0} = { }这行的输出[0,0]的原因是，es6 会解构传入的 空 {}，发现并没有 X和Y 所以解构失败，使用了默认值
+// 第四个输出：根本就没有传入参数，所以执行了 {x = 0,y = 0} = { }，得到的结果是 [0, 0]
+    
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

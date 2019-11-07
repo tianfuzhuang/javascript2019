@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+   let obj = {
+       name:'OBJ'
+   }
+   function fn(n,m){
+       console.log(this.name);       
+   }
+   fn()
+  // fn(10,20)
+fn.call(obj)//OBJ
+//call方法让fn中的this强制指向obj
+   
+   
+   
+   
+   </script> 
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Point {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                
+            }
+            myValue() {
+               console.log(  this.x + this.y);
+              
+            }
+            myValue1(){
+                let sum = 0;
+               sum = this.x - this.y;
+               console.log(sum);
+               
+            }
+            //箭头函数代表上下文content中的this
+          /*   myIdea(){
+                document.onclick = ()=>{
+                this.myValue();
+                 this.myValue1() ;
+                }
+            } */
+            //换一种写法 普通函数点击事件下的this
+
+               myIdea(){
+                   let that = this;
+                   document.onclick = function(){
+                   //this.myValue();
+                   //this.myValue1() ; 此时写法错误 this指代document
+                  that.myValue();
+                  that.myValue1();
+                   }
+               }
+
+
+            innt(){
+              this.myIdea()
+            }
+        }
+
+     var aa = new  Point(1,2) ;
+   aa.innt ()
+     
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
