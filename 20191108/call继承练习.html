@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //创建一个小汽车车类
+    function Cars(name,wheel){
+     this.name = name;
+     this.wheel =wheel; 
+    }
+    Cars.prototype.speed = function(){
+        alert('非常快')
+    }
+    
+    function Benz(price){
+        Cars.call(this,'奔驰','4个')
+        this.price = price;
+    }
+    
+    let a1 = new Cars;
+    let a2 =new Benz('100万','4个');
+
+    console.log(a2);
+   // 继承属性:
+           // 调用父类，通过call把this变为子类的实例即可(call继承) 
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //创建一个小汽车车类
+    function Cars(name,wheel){
+     this.name = name;
+     this.wheel =wheel; 
+    }
+    Cars.prototype.speed = function(){
+        alert('非常快')
+    }
+    
+    function Benz(price){
+        Cars.call(this,'奔驰','4个')
+        this.price = price;
+    }
+    
+ for(let attr in Cars.prototype){
+        //for in会枚举当前对象原型下的属性或者方法，使用hasOwnProperty就能只找对象自身的属性了
+        if(Cars.prototype.hasOwnProperty(attr)){
+            Benz.prototype[attr] = Cars.prototype[attr];
+        }
+    }
+
+
+
+
+
+
+    let a1 = new Cars;
+    let a2 =new Benz('100万','4个');
+
+    console.log(a2);
+   console.log(a2.speed());
+   
+    
+
+
+    /*
+        浅拷贝:
+        Object.assign(obj2,obj1,obj0)    
+
+        最后改变的是obj2，obj1是不会被修改的
+   */
+/* 
+    let obj = {
+        name:'阿里',
+        age:10
+    }
+    let obj2 = {
+        sex:'男',
+        name:'zf',
+        age:5
+    }
+    let obj3 = {
+        aa:8
+    }
+
+    //把obj3,obj2,obj的内容赋值到{}中
+    let obj4 = Object.assign({},obj3,obj2,obj); //越往右边层级越高
+
+    console.log(obj4);  */
+    
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

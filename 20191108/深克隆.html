@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let ary = [1,2,3,[1,2,3,{name:[1,2,3]}]];
+
+//深度克隆
+function deepclone(obj){
+    //看看obj是不是一个对象，不是对象就不执行deepclone
+    if(typeof obj !== 'object' && obj !== null)return null;
+    // let o = Array.isArray(obj)?[]:{};
+    let o = obj.push?[]:{}; //确认传进来的值到底是数组还是对象
+    for(let attr in obj){
+        //如果碰到了引用类型就继续循环，原始类型才赋值
+        if(typeof obj[attr] === 'object'){
+            o[attr] = deepclone(obj[attr]);
+        }else{
+            o[attr] = obj[attr];
+        }
+    }
+    return o;
+}
+
+//JSON.parse(JSON.stringify(ary))
+let ary2 = deepclone(ary);
+console.log(ary2);
+    
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

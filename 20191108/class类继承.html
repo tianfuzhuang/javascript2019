@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //创建一个小汽车车类
+     class Cars{
+        constructor(name,wheel){
+              this.name = name;
+              this.wheel =wheel;   
+        }
+
+      speed (){       
+        alert('非常快')
+         return 1
+        }
+
+
+    }
+    class Benz extends Cars{
+        constructor(price,...arg){
+          super(...arg);
+          this.price = price;  
+        }
+    }         
+      
+
+    let a1 = new Cars('汽车','8个');
+    let a2 =new Benz('奔驰','100万','4个');
+   a1.speed('hha')
+     console.log(a1);
+       console.log(a2);
+      console.log(a2.speed());
+   
+    
+    
+    </script>
+</body>
+</html>
