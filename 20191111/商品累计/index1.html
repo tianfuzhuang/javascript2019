@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body,
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="price.css" />
+</head>
+
+<body onselectstart="return false;">
+	<div class="wrap">
+		<div class="box">
+			<ul class="list">
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>12.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>10.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>8.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>8元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>14.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+			</ul>
+			<div class="info">
+				<span>商品公合计：<em>0</em>件</span>
+				<span>共花费了：<em>0</em>元</span>
+				<br />
+				<br />
+				<span>其中最贵的商品单价是：<em>0</em>元</span>
+			</div>
+		</div>
+	</div>
+	<script>
+	
+
+	
+			let ii = document.querySelectorAll('.list i'),
+				//console.log(this.ii);
+			price = document.querySelectorAll('.list span'),		
+			lists = document.querySelectorAll('.list li'),
+				num = document.querySelectorAll('.list em'),
+			
+		     	heji = document.querySelectorAll('.info span')
+		
+				//循环每个i绑定点击事件
+            
+              
+            
+				ii.forEach((item, i) => {
+					item.onclick = () => {
+						//判断当奇数时时点击上一个兄弟元素改变innnerHTML 
+                        
+						if (i % 2 != 0) {
+							var add = item.previousElementSibling.innerHTML;
+							add++;
+							item.previousElementSibling.innerHTML = add;
+							//则偶数	
+                              
+						} else {
+							var add = item.nextElementSibling.innerHTML;
+							if (add >= 1) {
+								add--;
+								item.nextElementSibling.innerHTML = add;
+                            
+							}
+                          
+						} 
+                    		
+						//获取单价,小计
+						item.parentNode.children[3].children[1].innerHTML =
+						parseFloat(item.parentNode.children[3].children[0].innerHTML) * add + '元';
+		                fn(add)
+					}
+                   
+					
+			         
+				})       
+				      /*  let ary = [];
+				       let haha = 0;
+					    function fn(add){
+						
+                         ary.push(add)
+						 console.log(ary
+						 );
+						 
+						  console.log(ary[0]); 
+					   
+					  ary.forEach((ele)=>{
+						   haha += ele;
+					  })
+					     console.log(haha);
+						  */
+					
+					
+					//  }         
+					
+					   
+               
+			
+
+
+					//   heji[0].children[0].innerHTML = add;
+	
+		
+
+
+
+
+
+	</script>
+</body>
+
+</html>
