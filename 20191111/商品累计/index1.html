@@ -71,82 +71,69 @@
 		</div>
 	</div>
 	<script>
-	
 
-	
-			let ii = document.querySelectorAll('.list i'),
-				//console.log(this.ii);
-			price = document.querySelectorAll('.list span'),		
+
+
+		let ii = document.querySelectorAll('.list i'),
+			//console.log(this.ii);
+			price = document.querySelectorAll('.list span'),
 			lists = document.querySelectorAll('.list li'),
-				num = document.querySelectorAll('.list em'),
+			num = document.querySelectorAll('.list em'),
+			heji = document.querySelectorAll('.info span')
+
+		//循环每个i绑定点击事件
+
+	      
+		     let ary = [];
+		     ii.forEach((item, i) => {
+		      item.onclick = () => {
+				//判断当奇数时时点击上一个兄弟元素改变innnerHTML 
 			
-		     	heji = document.querySelectorAll('.info span')
-		
-				//循环每个i绑定点击事件
-            
-              
-            
-				ii.forEach((item, i) => {
-					item.onclick = () => {
-						//判断当奇数时时点击上一个兄弟元素改变innnerHTML 
-                        
-						if (i % 2 != 0) {
-							var add = item.previousElementSibling.innerHTML;
-							add++;
-							item.previousElementSibling.innerHTML = add;
-							//则偶数	
-                              
-						} else {
-							var add = item.nextElementSibling.innerHTML;
-							if (add >= 1) {
-								add--;
-								item.nextElementSibling.innerHTML = add;
-                            
-							}
-                          
-						} 
-                    		
-						//获取单价,小计
-						item.parentNode.children[3].children[1].innerHTML =
-						parseFloat(item.parentNode.children[3].children[0].innerHTML) * add + '元';
-		                fn(add)
-					}
-                   
-					
-			         
-				})       
-				      /*  let ary = [];
-				       let haha = 0;
-					    function fn(add){
+				if (i % 2 != 0) {
+					var add = item.previousElementSibling.innerHTML;
+					add++;
+					item.previousElementSibling.innerHTML = add;
+					//则偶数
+					heji[0].children[0].innerHTML ++;
+
+					//总花费累加
+					var heji1 = Number(heji[1].children[0].innerText);
+					heji[1].children[0].innerText = heji1 + (parseFloat(item.parentNode.children[3].children[0].innerText) * add)
+
+				} else {
+
+				    //实现花费总计
+					var heji1 = Number(heji[1].children[0].innerText);
+					var add = item.nextElementSibling.innerHTML;
+					heji[1].children[0].innerText = heji1 - (parseFloat(item.parentNode.children[3].children[0].innerText) * add)
+					if (add > 0) {
+						//当i>0 add--
+						add--;
+						item.nextElementSibling.innerHTML = add;
+						heji[0].children[0].innerHTML --;
 						
-                         ary.push(add)
-						 console.log(ary
-						 );
-						 
-						  console.log(ary[0]); 
-					   
-					  ary.forEach((ele)=>{
-						   haha += ele;
-					  })
-					     console.log(haha);
-						  */
-					
-					
-					//  }         
-					
-					   
-               
-			
+						}
+                        
+				}
+                           
+				//获取单价,小计
+				    item.parentNode.children[3].children[1].innerHTML =
+					parseFloat(item.parentNode.children[3].children[0].innerHTML) * add + '元';
 
-
-					//   heji[0].children[0].innerHTML = add;
+                //最贵单价:
+				let price =parseFloat(item.parentNode.children[3].children[1].innerHTML)
 	
-		
+				 //求出ary的最大值
+				 ary.push(price);   
+				 heji[2].children[0].innerText= Math.max(...ary);
+				
+			  console.log(ary);
+			  
+			}
 
-
-
-
-
+		})
+      
+          
 	</script>
 </body>
 
