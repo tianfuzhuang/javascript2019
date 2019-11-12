@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
+        //string.replace(''或者放正则,'替换字符'或者放函数)  替换
+        let str = 'haha,呵呵';
+        console.log(str.replace(/haha|呵呵/g, function (a) {
+            let temp = '';
+            for (let i = 0; i < a.length; i++) {
+                temp += '*';
+
+            }
+            return temp;
+
+        }));
+
+/* replace的细节:默认情况下,函数的
+函数的第一个参数就是每次匹配的字符，如果匹配多次那么会多次调用 */
+
+    </script>
+</body>
+
+</html>

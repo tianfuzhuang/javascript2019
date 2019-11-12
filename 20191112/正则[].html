@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+   let str = '大渣好,是兄弟就来砍我,come.on!'; //30
+    //中文的区间范围:[\u4e00-\u9fa5]
+
+    let num = 0;//计数   
+
+    // for(let i=0;i<str.length;i++){
+    //     if(/[a-z.,!]/i.test(str[i])){
+    //         num++;
+    //     }else{
+    //         num += 2;
+    //     }
+    // }
+
+    for(let i=0;i<str.length;i++){
+        if(/[\u4e00-\u9fa5]/i.test(str[i])){
+            num+=2;
+        }else{
+            num ++;
+        }
+    }
+    console.log(num);
+  
+  
+  
+  </script>  
+</body>
+</html>

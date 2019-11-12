@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let str = 'dh8137289371299dx1';
+    console.log(/1/.exec(str));
+    //["1", index: 3, input: "dh8137289371299dx1", groups: undefined]
+    console.log(/\d+/.exec(str));
+    //["8137289371299", index: 2, input: "dh8137289371299dx1", groups: undefined]
+   //test方法
+    console.log(/z/.test(str));// 找当前字符串中是否有z这个字符 找不到就为false;
+    console.log(/x/.test(str));//找到就为true,检测结果是一个布尔值;
+
+    
+    
+    
+    </script>
+</body>
+</html>

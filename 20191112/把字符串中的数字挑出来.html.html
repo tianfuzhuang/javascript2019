@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+   let str = 'sdfdfdfsdasdf123dfdf1';
+   let ary =[];
+   let temp = '';
+   for (let i = 0; i < str.length; i++) {
+       //判断如果字符串位是数字就进行字符串拼接
+       if(!isNaN(parseInt(str[i]))){
+           temp += str[i]; 
+       }else{
+           //判断temp不是空字符串的时候添加进ary
+           if(temp){
+           ary.push(temp);
+           temp='';
+       }
+      } 
+      //for循环完之后，如果发现temp不是一个空字符串，说明最后几个为数字，需要把没有push到数组中的数字字符放到数组中
+    if(temp){ //保证temp不是一个空字符串
+        ary.push(temp);
+        temp = '';
+    }
+   }
+   console.log(ary);
+   
+   
+   
+   
+   
+   </script> 
+</body>
+</html>
