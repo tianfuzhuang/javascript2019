@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        body {
+            background: lightcyan;
+            font-size: 25px;
+        }
+
+        #main {
+            width: 600px;
+            height: 430px;
+            margin: 0 auto;
+            background-color: lightblue;
+            margin-top: 40px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        #main div {
+            width: 500px;
+            height: 80px;
+            margin: 0 auto;
+            line-height: 80px;
+            margin-top: 20px;
+
+
+
+        }
+
+        #main p #btn {
+            width: 100px;
+            height: 50px;
+            display: block;
+            background: thistle;
+            cursor:no-drop;
+        }
+
+        #main p {
+
+            position: absolute;
+            left: 240px;
+            top: 380px;
+        }
+
+        #main input {
+            width: 330px;
+            height: 50px;
+            font-size: 20px;
+            outline: none;
+            border: 3px solid red;
+            border-radius: 6px;
+        }
+
+        #main .active1 {
+            border: 3px solid greenyellow;
+        }
+
+        #main span {
+            width: 100px;
+            height: 50px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="qq">
+            <span>QQ：</span>
+            <input type="text" name="qq" id="qqqq" placeholder="&nbsp&nbsp&nbsp&nbsp请输入QQ"> 
+        </div>
+        <div id="email">
+            <span>Email：</span>
+            <input type="text" name="email" placeholder="&nbsp&nbsp&nbsp&nbsp请输入邮箱">
+        </div>
+        <div id="mobile">
+            <span>Mobile：</span>
+            <input type="text" name="phone" placeholder="&nbsp&nbsp&nbsp&nbsp请输入手机号码">
+        </div>
+        <div id="date">
+            <span>Date:</span>
+            <input type="text" name="birth" placeholder="&nbsp&nbsp&nbsp&nbsp请输入生日">
+        </div>
+
+        <p><input type="submit" value="注册" id="btn"></p>
+
+    </div>
+    <script>
+        // /^1[3456789]\d{9}&/).test(str)
+       let lists= document.querySelectorAll('#main div');
+        // console.log(lists);
+        let input1=document.querySelector("#qq input");
+        // console.log(lists.value);
+        let input2=document.querySelector("#email input");      
+        let input3=document.querySelector("#mobile input");         
+        let input4=document.querySelector("#date input");    
+          
+        
+     
+        lists[0].children[1].onkeyup=function(){
+         
+      //验证QQ号;      
+           if (/^[1-9]\d{4,10}$/.test(input1.value)) {
+                lists[0].children[1].className = 'active1';
+                console.log(input1.value);
+                
+            }
+            else{
+                lists[0].children[1].className = ''; 
+            }
+        }
+        
+      //验证邮箱号  
+        lists[1].children[1].onkeyup=function(){                        
+        if (/^[a-zA-Z][\w.-]{5,17}@[0-9a-zA-Z]{2,10}\.c(om|n)$/.test(input2.value)) {
+                lists[1].children[1].className = 'active1';
+                console.log(input1.value);
+            
+            }
+            else{
+                lists[1].children[1].className = ''; 
+            }
+        }
+
+  //验证手机号 
+  lists[2].children[1].onkeyup=function(){               
+           if (/^1[3-9]\d{9}$/.test(input3.value)) {
+                   lists[2].children[1].className = 'active1';
+                   console.log(input3.value);
+               }
+               else{
+                   lists[2].children[1].className = ''; 
+               }
+           }
+ // 验证出生日期
+  lists[3].children[1].onkeyup=function(){                     
+    if ( /^((19[2-9]\d{1})|(20((0[0-9])|(1[0-9]))))\-((0?[1-9])|(1[0-2]))\-((0?[1-9])|([1-2][0-9])|30|31)$/ig.test(input4.value) ) {
+                   lists[3].children[1].className = 'active1';
+                  
+               }
+               else{
+                   lists[3].children[1].className = ''; 
+               }
+           }
+   
+
+    
+//   if(lists[0].children[1].className == 'active1'){
+//      btn.style.cursor='pointer';
+//      alert (1)
+         
+//   }
+   //同时满足条件鼠标变小手
+     btn.onmouseover=function(){
+         if(lists[0].children[1].className == 'active1'&&lists[1].children[1].className == 'active1'&&lists[2].children[1].className == 'active1'&&lists[3].children[1].className == 'active1'){
+            btn.style.cursor='pointer';   
+         }else{
+           btn.style.cursor='no-drop';    
+     }
+     }
+
+ 
+
+    </script>
+
+
+</body>
+
+</html>
