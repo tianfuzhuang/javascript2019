@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      
+       let str ='https://www.baidu.com/s?wd=js%E4%B8%AD%E6%AD%A3%E5%88%99%3F%3D&rsv_spt=1&rsv_iqid=0xd7f763a40000f469&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=1&rsv_dl=tb&rsv_sug3=22&rsv_sug1=25&rsv_sug7=101&rsv_t=619bz57KB9pItmWUCHkHzbZmhUZanwFfxazZEQyGbjVcDRWjTZtPaO3OVIrBS9lcE7ax&rsv_sug2=0&inputT=16200&rsv_sug4=17151&rsv_jmp=slow'
+        var obj = {};
+       let reg = /([a-z]\w{0,10})=([\w=%-]+)/g;
+       str.replace(reg,function($0,$1,$2){
+           
+            obj[$1] = $2;
+        })
+      
+  
+console.log(obj);
+
+//验证是否是一个合法的url  
+let re = /^(http)s?:\/\/w{3}\.[a-z]{2,18}(\.[a-z]{2,3}){1,2}\/[a-z]{1,10}\?(([a-z]\w{0,10})=([\w=%-]+)&?)+$/;   
+    
+    
+    
+    
+    </script>
+</body>
+</html>

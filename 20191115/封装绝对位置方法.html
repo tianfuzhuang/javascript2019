@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //封装计算绝对位置方法
+        
+        class Tools {
+            position(nowEle) {
+                let l = 0;
+                let t = 0;
+                let cl = nowEle.clientLeft;
+                let ct = nowEle.clientTop;
+                while (nowEle) {
+                    l += (nowEle.offsetLeft + nowEle.clientLeft);
+                    t += (nowEle.offsetTop + clientTop);
+                    nowEle = nowELe.offsetParent;
+                }
+                l = l - cl;
+                t = t - cl;
+                return {
+                    l, t
+                }
+            }
+        }
+        let t1 = new Tools;
+        let { l, t } = t1.position(box2)
+
+        console.log(l, t);
+
+
+
+
+    </script>
+</body>
+
+</html>

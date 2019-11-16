@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>重复子项</title>
+</head>
+<body>
+    <script>
+    /*  
+        \数字(子项的个数)  -> \1  \2  代表第N个子项
+    */
+    
+    let str = 'aacbc';
+    console.log(str.match(/(a)\1/g));  //["aa"]
+    
+    </script>
+</body>
+</html>
