@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字母首字母大写练习</title>
+</head>
+<body>
+    <script>
+    
+    let str = 'good good study day day up';
+    let reg = /([a-z])[a-z]{1,5}/g;
+    str1 = str.replace(reg,(...arg)=>{
+               let [$0,$1] = arg;
+               let next  =  $0.substring(1);            
+               let prev  = $1.toUpperCase();
+               console.log($1.toUpperCase());       
+               return prev+next;
+    }) 
+    console.log(str1);
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

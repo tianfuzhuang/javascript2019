@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>正则练习</title>
+</head>
+
+<body>
+    <script>
+
+        //正则练习一
+        let obj = {
+            name: '小明',
+            age: 18,
+            say: '好好学习，天天向上'
+        }
+        let str = '我的名字叫{name},年龄是{age}岁,我想说:{say}';
+
+        let reg = /([a-z]{3,4})/g
+
+        let str1 = str.replace(reg, (...arg) => {
+            let [, $1] = arg;
+            console.log($1);
+            return obj[$1];
+        })
+        console.log(str1);
+        //正则练习一拓展
+        //需求:将中括号中的英文改成汉字
+
+
+        let str2 = '我的名字叫{name},年龄是{age}岁,我想说:{say}';
+        let reg1 = /([a-z]{3,4})/g
+        let i = 0;
+        let ary = ['刘德华','60','我的老嘎']; 
+        let str3 = str.replace(reg, (...arg) => {
+                    //   let [,$1]=arg;
+                      return ary[i++]
+        })
+        console.log(str3);
+
+       
+
+
+    </script>
+</body>
+
+</html>
