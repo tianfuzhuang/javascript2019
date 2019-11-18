@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题练习</title>
+</head>
+<body>
+    <script>
+    // function A(){alert(1);}
+// function Fn() {
+//     A = function(){
+//        alert(2);
+//     };
+//     return this;
+// }
+// Fn.A=A;
+// Fn.prototype={
+//     A:()=>{
+//        alert(3);
+//     }
+// };
+// A();//1
+// Fn.A();//1
+// Fn().A();//2
+// new Fn.A();//1
+// new Fn().A();//3
+// new new Fn().A();//? 报错
+
+function A1(name) {
+    this.name = name;
+}
+function A2(name) {
+    this.name = name || 'Jerry';
+}
+function A3(name) {
+    name && (this.name = name);
+}
+A1.prototype.name = 'Tom';
+A2.prototype.name = 'Tom';
+A3.prototype.name = 'Tom';
+//undefined + 'Jerry' + 'Tom' 
+alert((new A1().name) + (new A2().name) + (new A3().name));
+
+
+
+    
+    
+    
+    </script>
+</body>
+</html>

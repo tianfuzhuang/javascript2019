@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+  let ary = [1,1,2,3,4];
+//重写ForEach方法
+Array.prototype.myForEach = function (callback,that){
+    //this -> ary
+    for(let i=0;i<this.length;i++){
+        callback.call(that,this[i],i,this);
+    }
+}
+ let r = ary.myForEach(function(item,index,all){
+        console.log(item,index,all,this);
+        // return 5;
+    },document);
+
+//手写ForMap
+Array.prototype.myMap = function(callback,that){
+        let ary = [];
+        for(let i=0;i<this.length;i++){
+            ary.push(callback.call(that,this[i],i,this));
+        }
+        return ary;
+    }
+   let r = ary.myMap(function(item,index,all){
+        console.log(this);
+        return '<li>'+item+'</li>';
+    },document);
+
+    console.log(r);
+
+
+
+  
+  </script>  
+</body>
+</html>

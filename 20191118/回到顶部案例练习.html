@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    a{
+     list-style: none;
+     color: #000; 
+     text-align: center;
+     text-decoration: none;
+     
+    }
+    html,body{
+        height: 1000%;
+        background: -webkit-linear-gradient(top left,lightblue, lightpink, lightyellow );
+    }
+    .link{
+        width: 30px;
+        height: 100px;
+        background: crimson;
+        position: fixed;
+        box-sizing: border-box;
+        font-size: 20;
+        right: 30px;
+        top: 400px;
+        display: none;
+        cursor: pointer;
+    }
+    
+      
+    
+    </style>
+</head>
+<body>
+ <a href="javascript:;" id="link" class="link">回到顶部</a>
+ <script>
+ let HTML =document.documentElement;
+ let LINK =document.getElementById('link') 
+ function check(){
+      let winH = HTML.clientHeight;
+      let scrT=HTML.scrollTop;
+      LINK.style.display = scrT>winH*2?'block':'none';
+ }
+   window.onscroll = check;
+   //点击回到顶部
+   LINK.onclick=function(){
+          //  LINK.style.display='none';
+           let step = 100;
+          
+           let timer = setInterval(()=>{
+           let curT = HTML.scrollTop;
+         if(curT === 0){
+           clearInterval(timer);
+           return;
+           }
+           curT -= step;
+           HTML.scrollTop = curT ;
+           },17);
+
+
+    // HTML.scrollTop=0;
+   }
+  
+
+
+ 
+ </script>
+</body>
+</html>

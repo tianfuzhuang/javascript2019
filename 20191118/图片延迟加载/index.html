@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href='css/1.css'>
+</head>
+
+<body>
+    <div id="main">
+        <div id="nav">
+            <span>排序</span>
+            <a href="javascript:;" data-name="time">
+                上架时间
+                <i class="up"></i>
+                <i class="down"></i>
+            </a>
+            <a href="javascript:;" data-name='hot'>
+                热度
+                <i class="up"></i>
+                <i class="down"></i>
+            </a>
+            <a href="javascript:;" data-name='price'>
+                价格
+                <i class="up"></i>
+                <i class="down"></i>
+            </a>
+        <div>
+         <input type="text"> 
+         <input type="text"> 
+        </div>
+        </div>
+       
+        <ul id="ul">
+         <li>
+         <img src="img/4.jpg" alt="">
+        <!-- <p>商品名称<span></span></p>
+        <p>商品名称<span></span></p>
+        <p>商品名称<span></span></p>
+        <p>商品名称<span></span></p>
+      </li>  -->
+        </ul>
+    </div>
+
+    <script>
+
+        fetch('./json/product.json')
+            .then(d => d.json())
+            .then(data => {
+                let newdata = data.concat();
+                function render(newdata) {
+                    let lis = newdata.map(({ title, img, price, time, hot }, i) => {
+                        return (
+                            `<li>
+                    <img data-src="${img}" alt="">
+                    <p
+                        title="${title}"
+                    >商品名称:<span>${title.substr(0, 6)}</span></p>
+                    <p>上架时间:<span>${time}</span></p>
+                    <p>商品热度:<span>${hot}</span></p>
+                    <p>商品价格::<span>${price}</span></p>
+                </li>`
+                        );
+                    }).join('');
+                    ul.innerHTML = lis;
+                }
+                render(newdata);
+
+                const ih = window.innerHeight; //可视区的高度
+        const li = document.querySelectorAll('#ul li');
+       
+        window.onscroll = fn;
+        fn();
+        function fn(){
+            // console.log(window.pageYOffset);//滚动条的距离
+            let num = 50;
+            li.forEach((ele,i) => {
+                let {top:t}= ele.getBoundingClientRect();
+                console.log( ele.getBoundingClientRect());
+                
+                console.log(t);
+                if(ih + window.pageYOffset >= t && !ele.children[0].src){ //要显示       
+                    //把图片dataset属性中的src变成真正的src，这个时候图片就能正常显示到页面了
+                    ele.children[0].src = ele.children[0].dataset.src;                 
+                    setTimeout(() => {
+                        ele.children[0].style.opacity = 1;
+                    }, num*i);
+                }
+                // console.log(t);
+            });  
+        }
+
+                let as = document.querySelectorAll('a');
+                as.forEach((ele, i) => {
+                    ele.onoff = true;
+                    ele.onclick = function () {
+                        if (this.onoff) {
+                            newdata.sort((a, b) => {
+                                if (this.dataset.name === 'time') {
+                                    return new Date(b.time) - new Date(a.time)
+                                }
+                                return b[this.dataset.name] - a[this.dataset.name];
+                            });
+                            this.children[1].classList.remove('up1');
+                            this.children[0].classList.add('up2');
+                        } else {
+                            newdata.sort((a, b) => {
+                                if (this.dataset.name === 'time') {
+                                    return new Date(a.time) - new Date(b.time)
+                                }
+                                return a[this.dataset.name] - b[this.dataset.name];
+                            });
+                            this.children[0].classList.remove('up2');
+                            this.children[1].classList.add('up1');
+                        }
+                        this.onoff = !this.onoff;
+                        render(newdata);
+                    }
+                });
+            });
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
