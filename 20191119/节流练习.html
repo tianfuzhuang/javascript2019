@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+   //方案一
+   function throttle(fn,delay){
+    let valid = true
+    return function() {
+       if(!valid){
+           //休息时间 暂不接客
+           return false 
+       }
+       // 工作时间，执行函数并且在间隔期内把状态位设为无效
+        valid = false
+        setTimeout(() => {
+            fn()
+            valid = true;
+        }, delay)
+    }
+}
+//方案二:时间戳
+function throttling(cb,time){
+        let prevtime = 0;
+        return function(...arg){
+            let nowTime = +new Date;
+            // console.log(nowTime - prevtime)
+            if(nowTime - prevtime > time){
+                cb.call(this,...arg);
+            }
+            prevtime = nowTime;
+        }
+    }
+    
+     document.onscroll = debounce(fn,2000);
+    //document.onclick = throttling(fn,200);
+
+    //事件函数的第一个参数为事件对象
+    function fn(ev){
+        // console.log(ev);
+        // console.log('触发了',ev,this);
+        console.log(ev);
+        console.log('好了');    
+    }  
+    
+    </script> 
+</body>
+</html>
