@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 400px;
+        height: 400px;
+        background: greenyellow;
+        position: absolute;
+        left: 0;
+        top: 0;
+        cursor: move;
+    }
+    
+    
+    
+    
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+    box.onmousemove = function(ev){
+      console.log(ev);
+      this.style.left = ev.clientX-this.clientWidth/2+'px';
+      this.style.top=ev.clientY-this.clientHeight/2+'px';
+    }
+    
+    
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 600px;
+        height: 600px;
+        background: blueviolet;
+    }
+    #box1{
+        width: 300px;
+        height: 300px;
+        background: brown;
+    }
+    
+    
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="box1">
+
+        </div>
+    </div>
+   <script>
+    box.onmouseenter = function(){
+     console.log('大盒子移入');  
+    };
+    box.onmouseleave = function(){
+   console.log('大盒子移出');
+    };
+    box1.onmouseenter = function(){
+  console.log('小盒子移入');
+    }
+    box1.onmouseleave = function () {
+      console.log('小盒子移出');
+        
+    }
+    
+    
+    
+    </script> 
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<input type="text" id="txt">
+<ul id="ul"></ul>
+<script>
+   //需求 敲击enter键发送消息
+   //知识点: ev.ctrlKey ev.shiftKey ev.altKey 
+   //组合键默认是用不了的,后面的安检会把前面的安检覆盖
+
+txt.onkeyup = function (ev) {
+    if(ev.keyCode === 13){
+        ul.innerHTML += `<li>${this.value}</li>`;
+        this.value = '';
+    }
+     console.log(ev.keyCode);
+     
+}
+//组合键shift + enter 同时输出
+txt.onkeyup = function (ev)    {
+      if(ev.keyCode===13&&ev.shiftKey === true){
+      ul.innerHTML +='<li>'+this.value+'</li>'
+      txt.value='';
+      }
+      
+}
+
+
+
+
+
+</script>
+</body>
+</html>

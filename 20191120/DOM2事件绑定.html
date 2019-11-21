@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>冒泡</title>
+    <style>
+    
+    #box{
+        background: greenyellow;
+        height: 500px;
+        width: 500px;
+        margin: 50px auto;
+        overflow: hidden;
+    }
+    #box1{
+        background: grey;
+        height: 400px;
+        width: 400px;
+        margin: 0 auto;
+    }
+    #box2{
+        background: hotpink;
+        width: 300px;
+        height: 300px;
+        margin:0 auto;
+    }
+    #box3{
+        background: indigo;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    
+    
+    </style>
+</head>
+<body>
+
+<div id="box">0
+<div id="box1">1
+    <div id="box2">2
+        <div id="box3">
+3
+        </div>
+    </div>
+</div>
+</div>
+<script>
+box.addEventListener('click',
+ function(){
+        alert('box')
+},false)
+box1.addEventListener('click',
+ function(){
+        alert('box1')
+},true)
+box2.addEventListener('click',
+ function(){
+        alert('box2')
+},false)
+box3.addEventListener('click',
+ function(){
+        alert('box3')
+},false)
+// 点击目标元素 先执行box1(捕获阶段执行) ->目标事件->box2->box
+</script>
+
+ <script>
+    
+    
+    
+
+
+</script>   
+</body>
+</html>
