@@ -120,8 +120,23 @@
 		</div>
 	</body>
 <script>
-	
-
+	class Tree {
+		constructor(){
+		}
+       
+     api(url,cb){
+		 let that = this;
+		 fetch(url)
+		 .then(d=>d.json())
+		 .then(data=>{
+			 cb.call(this,data)
+		 })
+	 }
+	  render(){
+		  this.api('')
+	  }
+	}
+  
 	
 
 </script>
