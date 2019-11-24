@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+   <style>
+       #box{
+            width:100px;
+            height: 100px;
+            background: tomato;
+            position: absolute;
+            left: 0;
+           top: 0;
+       }
+   </style>
+</head>
+<body>
+    <div id="box">
+    </div>
+   <script>
+   //拖拽必须满足按个事件
+   /* 
+   鼠标按下事件onmousedown 鼠标移动事件onmousemove 鼠标离开事件onmouseup 要先触发onmousedown然后在移动和抬起
+    */
+   box.onmousedown = function(ev){      
+      document.onmousemove = function(ev){
+          console.log(ev.pageX);
+     
+          
+          
+       box.style.left = ev.pageX-box.clientWidth/2+'px';
+       box.style.top = ev.pageY-box.clientHeight/2+'px';
+      }
+      document.onmouseup = function(){
+        document.onmousemove = null}
+   }
+ 
+   
+   
+   
+   
+   
+   </script> 
+</body>
+</html>

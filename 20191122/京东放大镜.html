@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+}
+div{
+    float:left
+}
+#box{
+    width:350px;
+    height: 350px;
+    border:1px solid #000;
+    position: relative;
+}
+#box2{
+    position: absolute;
+    width:100px;
+    height:100px;
+    background:rgba(255,125,175,.5);
+    top:0;
+    left:0;
+    display:none;
+    cursor: move;
+}
+#box3{
+    width:500px;
+    height:500px;
+    border:1px solid #000;
+     position: relative; 
+    overflow: hidden;
+    display:none;
+}
+#img2{
+    position: absolute;
+    top:0;
+    left:0;
+}
+</style>
+</head>
+<body>
+    <div id="box">
+        <img src="./1.jpg" alt="" srcset="">
+        <div id="box2"></div>
+    </div>
+    <div id="box3">
+            <img id="img2" src="./2.jpg" alt="" srcset="">
+    </div>
+<script>
+ //思路 小盒子可以移动的距离和移动最大距离的比例和大盒子相对于大图距离的比例值相对;
+ //需要注意边界处理的问题
+ //当鼠标滑到box上让小图和大和display等于block;
+  box.onmouseover = function(){
+      box2.style.display = box3.style.display = 'block';
+  }
+  //当鼠标划出小盒子时让他俩消失
+  box.onmouseout = function(){
+    box2.style.display = box3.style.display = 'none';
+  }
+  document.onmousemove = function(ev){
+    
+      //边界判断
+      //box2   X轴可以移动的最小距离是 ev.pageX - box2.clientWidth/2>0 
+      //box2   X轴可以移动的最大距离是 ev.pageX - box2.clientWidth/2>box.clientWidth - box2.clientWidth
+      let l = ev.pageX - box2.clientWidth/2;
+      let t = ev.pageY - box2.clientHeight/2;
+      if(l<0){
+          l = 0;
+      }
+      if(l>box.clientWidth - box2.clientWidth){
+          l = box.clientWidth - box2.clientWidth
+      }
+      if(t<0){
+          t = 0;
+      }
+      if(t>box.clientHeight - box2.clientHeight){
+          t = box.clientHeight - box2.clientHeight
+      }
+
+      box2.style.left = l+'px';
+      box2.style.top = t+ 'px';
+
+      //放大镜相对于box移动的比例
+      let bilil  =  l/(box.clientHeight - box2.clientHeight);
+      let bilit  =  t/(box.clientHeight - box2.clientHeight);
+      img2.style.left = - (img2.clientWidth-box3.clientWidth)*bilil+'px';
+      img2.style.top = - (img2.clientHeight-box3.clientHeight)*bilit+'px';
+
+
+  }
+
+</script>
+</body>
+</html>

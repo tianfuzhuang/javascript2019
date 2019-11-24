@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    #ul{
+        width: 100px;
+        border: 1px solid seagreen;
+         display: none; 
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    #ul li{
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        border-bottom: 1px dashed orange;
+    }
+    #ul li:hover{
+        background: lightcoral;
+    }
+   a{
+       display: none;
+   }
+    
+    </style>
+</head>
+<body>
+
+    <a href="http://www.baidu.com" id="aa">去百度</a>
+    <ul id="ul">
+        <li>我的帖子</li>
+        <li>用户管理</li>
+        <li>我的关注</li>
+        <li>我的兄弟</li>
+    </ul >
+
+   <script>
+ /*   document.oncontextmenu = function(ev) {
+        ul.style.display = 'block';
+        ul.style.top = ev.pageY+'px';
+        ul.style.left = ev.pageX +'px';
+        return false;     
+   }
+    */
+    let page= "1px";
+   document.oncontextmenu = function(ev) {
+      ul.style.cssText = " display:block;top:"+ev.pageX+"px";
+        return false;    
+   }
+   
+   
+   </script> 
+</body>
+</html>
