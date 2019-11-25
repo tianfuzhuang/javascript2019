@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>点击按钮添加一个li</title>
+</head>
+
+<body>
+    <button id="btn">添加
+        <span>1</span>
+    </button>
+    <ul id="ul"></ul>
+    <script src="../jquery.min.js"></script>
+    <script>
+        let btn = $('#btn');
+        let num = 0;
+        btn.click(function () {
+            let $li = $(`<li>${num++}</li>`);
+            $('#ul').append($li);
+            $li.css({ width: '50px', height: '20px', background: 'green' })
+            //点谁删除谁
+            $li.click(function () {
+                $(this).remove();
+            });
+
+
+        });
+          
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

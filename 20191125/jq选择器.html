@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<div id="box">1</div>
+<div class="haha">2</div>
+<span>3</span>
+<p index="1">4</p>
+<ul id="ul">
+    <li>哈</li>
+    <li>哈哈</li>
+    <li>哈哈哈</li>
+    <li>哈哈哈哈</li>
+</ul>
+<button>1</button>
+<button>2</button>
+<input type="text">
+<input type="checkbox">
+<body>
+   <script src="../jquery.min.js"></script> 
+   <script>
+   $('#box').css({width:"100px",height:'100px',background:'yellow'});//选择id
+   $('.haha').css({width:'100px',height:'100px',background:'green'});//选择class='haha'的元素
+   $('span').css('background','tomato')//获取span标签
+   $('[index="1"]').css('background','pink');
+   $('#ul li').css('background','blue');
+   $('#ul li').eq(1).css('background','pink');
+   $('#ul li:eq(2)').css('background','pink');//第几个li
+   $('#ul li:odd').css('background','black');//奇数行
+   $('#ul li:even').css('background','green');//偶数行
+   $('button:eq(0)').css('background','orange');
+   $(':text').css('background','black')//伪类选择
+   </script>
+</body>
+</html>
