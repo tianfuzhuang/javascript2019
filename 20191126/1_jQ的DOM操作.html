@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <div class="pb">
+                <div class="pb">
+                    <div id="box">1</div>
+                </div>
+            </div>
+          
+            <div class="pb">4</div>
+           <div id="hah">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+        </div>
+        <script src='../jquery.min.js'></script>
+        <script>
+        
+        //  $('button').eq(0).click(function(){
+        //     $(this).prev().css('background','green') 
+        //  })
+        
+     /*     $('button:eq(0)').click(function(){
+            $(this).prev().css('background','green') 
+         }) */
+        
+      /*    $('button:eq(0)').click(function(){
+            $(this).siblings().css('background','green') 
+         }) */
+         $('button:eq(0)').click(function(){
+             console.log( $(this).parents('div'));
+             
+            $(this).parents('div').css('background','green') 
+         })
+        
+        </script> 
+</body>
+</html>

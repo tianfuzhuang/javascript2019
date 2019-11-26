@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <div id="box">
+                <ul>  
+                </ul> 
+            </div>
+    <script src="../jquery.min.js">
+        
+   </script>
+    <script>
+     
+       
+    let ary = ['尹德志','你真胖','董尚','李磊'];
+
+    // ary.forEach((item,i)=>{
+    //     let $li = $('<li>'+(i+1)+'</li>');
+    //     $li.on('click',{data:item},function(ev){
+    //         console.log(ev);
+    //         console.log('我的名字叫'+ev.data.data); //存数据的
+    //     });
+    //     $('ul').append($li);
+    // });
+     
+ ary.forEach((item,i)=>{
+      let $li = $(`<li>${i+1}</li>`)
+    $('ul').append($li);  
+      $li.on('click',{data:item},function(ev){
+        //let $li = $(`<li>${i+1}</li>`)
+        $('ul').append($li);
+        console.log(ev.data);
+        
+     
+        
+       })  
+         
+    
+       
+       
+    //    $(`<li>我的名字jiao${ary[i]}</li>`)
+   })   
+        
+        
+        
+        
+        
+        
+</script>
+</body>
+</html>
