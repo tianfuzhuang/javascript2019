@@ -289,7 +289,7 @@
         const $next = $imgBox.find('#next');
         const $pic = $imgBox.find('#pic');
         const $strong = $imgBox.find('strong');
-    
+
         let len = arrImg.length;
         let num = 0;
         function init() {
@@ -299,18 +299,51 @@
         }
 
         init();
-        const tab0 =$('#tabBox a:eq(0)');
+        const tab0 = $('#tabBox a:eq(0)');
 
         let onoff = true;
-           
-        tab0.click(function(){
-             $('#tabBox p').text('图片可以从最后一张跳转到第一张循环切换');
+
+        tab0.click(function () {
+            $('#tabBox p').text('图片可以从最后一张跳转到第一张循环切换');
             //切换卡颜色切换
-            tab.css({'background-color':'black',color:'white' });
-            $('#tabBox a:eq(0)').css({'background-color':'white',color:'black' });
-     });
-       
+            tab.css({ 'background-color': 'black', color: 'white' });
+            $('#tabBox a:eq(0)').css({ 'background-color': 'white', color: 'black' });
+        });
+        const tab = $('#tabBox a:eq(1)');
+        tab.click(function () {
+            $('#tabBox p').text('不循环');
+            //切换卡颜色切换
+            tab.css({ 'background-color': 'white', color: 'black' });
+            $('#tabBox a:eq(0)').css({ 'background-color': 'black', color: 'white' });
+
+
+        })
+
+
+
+
         $next.click(function () {
+           
+        });
+
+
+
+
+
+//点下一项++
+  $next.click(function () {
+
+        if ( $('#tabBox p').text()==='不循环') {
+          
+                num++;
+                // num %= len;
+                if (num == 4) {
+                    num = 3
+                }
+                init()
+                console.log(num);
+
+        }else{
             num++;
             // num %= len;
             if (num == 4) {
@@ -318,38 +351,37 @@
             }
             init();
             console.log(num);
+
+        }
+
+  });
+//点上一项减减
+$prev.click(function () {
+
+if ( $('#tabBox p').text()==='不循环') {
+  
+        num--;
+        // num %= len;
+        if (num == -1) {
+            num = 0
+
             
-        });
-           
+        }
+        init()
+        console.log(num);
 
+}else{
+    num--;
+    // num %= len;
+    if (num == -1) {
+        num = 3
+    }
+    init();
+    console.log(num);
 
-      
-    
-        
-        const tab =$('#tabBox a:eq(1)');
-        tab.click(function(){
-            $('#tabBox p').text('不循环');
-            //切换卡颜色切换
-            tab.css({'background-color':'white',color:'black' });
-            $('#tabBox a:eq(0)').css({'background-color':'black',color:'white' });
-              onoff = false;
-           if(!onoff){
-            $next.click(function () {
-            num++;
-            // num %= len;
-            if (num == 4) {
-                num = 3
-            }
-            init()
-            console.log(num);
-             
-        });
-             
 }
-     
 
-        })
-        
+});
     </script>
 </body>
 
