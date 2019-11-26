@@ -301,7 +301,7 @@
         init();
         const tab0 = $('#tabBox a:eq(0)');
 
-        let onoff = true;
+       
 
         tab0.click(function () {
             $('#tabBox p').text('图片可以从最后一张跳转到第一张循环切换');
@@ -322,12 +322,6 @@
 
 
 
-        $next.click(function () {
-           
-        });
-
-
-
 
 
 //点下一项++
@@ -338,7 +332,11 @@
                 num++;
                 // num %= len;
                 if (num == 4) {
-                    num = 3
+                    num = 3;
+                    $('#tanBox').show();
+                    $('#tanBox a').click(function(){
+                        $('#tanBox').hide(); 
+                    })
                 }
                 init()
                 console.log(num);
@@ -357,15 +355,17 @@
   });
 //点上一项减减
 $prev.click(function () {
-
 if ( $('#tabBox p').text()==='不循环') {
-  
         num--;
         // num %= len;
         if (num == -1) {
-            num = 0
-
-            
+            num = 0;
+            $('#tanBox').show();
+            $('#tanBox strong').text('第一张啦老弟');
+                    $('#tanBox a').click(function(){
+                        $('#tanBox').hide();  
+                        $('#tanBox strong').text('已经到最后一张啦～');
+                    })
         }
         init()
         console.log(num);
