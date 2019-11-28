@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       let p = new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            resolve({
+                data:'{"name":"珠峰"}',
+                json:function (){
+                    return JSON.parse(this.data);
+                }
+            })
+        }, 2000);
+    });
+
+    p.then(function(d){ 
+        console.log(d);
+          
+       return d.json();
+    })
+    .then(function(d){
+        //{"name":"珠峰"} -> json是字符串，把json转成对象使用JSON.parse  
+        console.log(d.name);
+    });
+   
+        
+        
+    
+    
+    
+    
+    </script>
+</body>
+</html>

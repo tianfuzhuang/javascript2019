@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script src="../jquery.min.js"></script>
+<script>
+    function myFetch(url){
+        return new Promise(function(resolve,reject){
+            $.ajax({
+                url,
+                success:function(data){ //请求之后的
+                    resolve(data);
+                },
+                error:reject
+            });
+        })
+    }
+ //race 在数组中只要有一个异步成功就返回这次成功的结果,all是数组中的一部操作都要成功才返回的结果
+ let  p = Promise.race([myFetch('2.json'),myFetch('1.json')]) 
+ p.then((d)=>{
+        console.log(d);
+    }).catch((error)=>{
+        console.log(error)
+    });
+
+</script>
+</body>
+</html>
