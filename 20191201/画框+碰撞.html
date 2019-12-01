@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 0;
+        left:0 ;
+        background: green;
+    }
+    #box2{
+        width: 100px;
+        height: 100px;
+        background: brown;
+        margin:400px auto;
+    }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script>
+   
+    document.onmousedown = function(ev){
+        console.log(2);
+        box.style.display = 'block';
+           let downX = ev.pageX;
+           let downY = ev.pageY;
+     document.onmousemove = function(ev){
+            console.log(3);
+            
+    box.style.width =Math.abs( ev.pageX - downX )+'px';
+    box.style.height = Math.abs(ev.pageY - downY) + 'px';
+
+    box.style.top =Math.min(ev.pageY,downY) +'px';
+    box.style.left =Math.min(ev.pageX,  downX)+'px';
+ }  
+    document.onmouseup = function(ev){
+       box.style.height = box.style.width = 0;
+            box.style.display = 'none';
+       console.log(1);
+        
+        // document.onmousedown =null;
+        document.onmousemove =null;
+        document.onmouseup = null;
+    }
+        
+    return false;
+    }
+    
+    </script>
+</body>
+</html>

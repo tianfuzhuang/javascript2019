@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    
+ 
+    #box{
+       
+         width: 100px;
+         height: 100px;
+         background:green;
+         position: absolute;
+         top: 0;
+         left:0;
+    }
+    #box2{
+        width: 100px;
+        height: 100px;
+        background: brown;
+        margin:400px auto;
+    }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script>
+ box.addEventListener('mousedown',function(ev){
+           let downX = ev.pageX - box.offsetLeft;
+           let downY = ev.pageY - box.offsetTop;
+          document.addEventListener('mousemove',mv);
+          document.addEventListener('mouseup',up);
+          //获取box2的绝对位置 
+           let {top:t2,right:r2,bottom:b2,left:l2} = box2.getBoundingClientRect();
+           function mv(ev){
+             box.style.left = ev.pageX -  downX + 'px';
+             box.style.top = ev.pageY- downY + 'px';
+             let {top:t,right:r,bottom:b,left:l} = box.getBoundingClientRect();
+             if(r<l2||b<t2||l>r2||t>b2){
+                   console.log('没碰到');
+                    box2.style.backgroundColor = 'brown'
+             }else{
+                 console.log('碰到了');
+                box2.style.backgroundColor = 'tomato'
+               }    
+
+         }
+            
+       
+          function up(ev){
+
+         document.removeEventListener('mousemove',mv)
+         document.removeEventListener('mouseup',up)
+        
+   }
+       
+       ev.preventDefault();
+});  
+    
+    
+    </script>
+</body>
+</html>
