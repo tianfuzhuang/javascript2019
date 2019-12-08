@@ -1,0 +1,451 @@
+html,
+body {
+  width: 100%;
+  height: vh;
+}
+#mainBox {
+  width: 100%;
+  height: vh;
+}
+#navLists {
+  height: 700px;
+}
+.leftNav {
+  width: 25%;
+  height: 100%;
+  background: rgba(75, 80, 99);
+  overflow: hidden;
+  float: left;
+}
+.rightMain {
+  width: 30%;
+  background: #E6E6F2;
+}
+.logo {
+  width: 90%;
+  height: 70px;
+  margin: 0 auto;
+  margin-top: 15px;
+  border-radius: 6px;
+  background: url('../images/logo.png') no-repeat;
+  background-position: 4px;
+  background-size: cover ;
+  background-color: rgba(41, 141, 239);
+}
+.navBox {
+  width: 100%;
+  height: 70px;
+  background: white;
+  display: flex;
+  line-height: 70px;
+  font-size: 30px;
+}
+.navBox .left {
+  flex-grow: 0.5;
+  height: 70px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.navBox .left i {
+  font-size: 22px;
+}
+.navBox .center {
+  flex-grow: 1;
+  height: 70px;
+}
+.navBox .right {
+  flex-grow: 1;
+  height: 70px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.navBox .right h4 {
+  font-size: 18px;
+}
+.navBox .right div {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: url('../images/yh.jpg') center center no-repeat;
+  margin-top: 10px;
+  background-size: cover;
+}
+.rightMain {
+  float: left;
+  width: 75%;
+  height: 800px;
+}
+.actBox {
+  width: 100%;
+  height: 60px;
+  background: white;
+  margin-top: 8px;
+}
+.actBox2 {
+  width: 100%;
+  height: 50px;
+  background: #ecf1f7;
+  border: 1px solid #ecf1f7;
+}
+#nav {
+  width: 100%;
+  height: 58px;
+  border-bottom: 1px solid #d1d9db;
+  background: #ecf1f7;
+}
+.nav_left {
+  float: left;
+  padding-left: 20px;
+}
+.nav_left li {
+  float: left;
+  margin-right: 10px;
+  padding: 0 24px 0 54px;
+  color: #6b7073;
+  height: 36px;
+  line-height: 38px;
+  border: 1px solid #d1d9db;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+  background: #fff;
+  position: relative;
+}
+.nav_left li:hover {
+  color: #56acdf;
+  border-color: #56acdf;
+}
+.nav_left li i {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+}
+.nav_left li:nth-of-type(1) i {
+  background: url(../images/download.png) no-repeat;
+}
+.nav_left li:nth-of-type(2) i {
+  background: url(../images/fenxiang.png) no-repeat;
+}
+.nav_left li:nth-of-type(3) i {
+  background: url(../images/move.png) no-repeat;
+}
+.nav_left li:nth-of-type(4) i {
+  background: url(../images/ming.png) no-repeat;
+}
+.nav_left li:nth-of-type(5) i {
+  background: url(../images/delete.png) no-repeat;
+}
+.nav_left li:nth-of-type(6) i {
+  background: url(../images/create.png) no-repeat;
+}
+.nav_left li:nth-of-type(7) i {
+  background: url(../images/refresh.png) no-repeat;
+}
+.nav_left li:last-of-type i {
+  left: 10px;
+  top: 10px;
+}
+.nav_left li:last-of-type {
+  padding: 0;
+  height: 36px;
+  width: 36px;
+  margin-right: 0;
+}
+#quanxuan {
+  width: 15px;
+  height: 15px;
+  border: 1px solid black;
+  margin-top: 16px;
+  margin-left: 40px;
+}
+.folder {
+  float: left;
+  margin: 10px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  width: 100px;
+  text-align: center;
+  height: 140px;
+  overflow: hidden;
+}
+.folder img {
+  width: 80px;
+}
+.folder input {
+  width: 80px;
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+}
+.folder p {
+  width: 80px;
+  margin: 0 auto;
+  text-align: center;
+  word-wrap: break-word;
+}
+#kuang {
+  width: 0;
+  height: 0;
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  left: 0 ;
+  background: rgba(156, 155, 155, 0.2);
+}
+.checked {
+  background: url(../images/checked.png) no-repeat;
+}
+#bignewBox {
+  width: 100%;
+  height: 600px;
+  position: relative;
+}
+#empty {
+  width: 100%;
+  height: 600px;
+  display: none;
+  background: #f6f7fb url(../images/cover-bg.png) center no-repeat;
+  background-position-y: 20px;
+  background-size: 35%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#newBox .file-item {
+  float: left;
+  margin-left: 10px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  width: 180px;
+  height: 180px;
+  box-sizing: border-box;
+  background: #ebeff0;
+  border-radius: 4px;
+  position: relative;
+  line-height: 120px;
+  text-align: center;
+  border: 1px solid #ebeff0;
+  cursor: pointer;
+}
+#newBox .file-item img {
+  /* 宽度先注释掉 */
+  width: 80px;
+  /* height:72px; */
+  vertical-align: -34px;
+}
+#newBox .active {
+  background: #fff;
+  border: 1px solid #54afdc;
+  box-shadow: 0px 0px 10px #d6e8f4;
+}
+#newBox .active span {
+  color: #54afdc;
+}
+#newBox .file-item:hover {
+  background: #fff;
+  border: 1px solid #54afdc;
+  box-shadow: 0px 0px 10px #d6e8f4;
+}
+#newBox .file-item:hover i {
+  border: 1px solid #d1d8de;
+}
+#newBox .file-item:hover span {
+  color: #54afdc;
+}
+#newBox .file-item i {
+  cursor: default;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 16px;
+  height: 16px;
+}
+#newBox .hov {
+  background: #fff;
+  border: 1px solid #54afdc;
+  box-shadow: 0px 0px 10px #d6e8f4;
+}
+#newBox .hov i {
+  border: 1px solid #d1d8de;
+}
+#newBox .checked {
+  border: 1px solid #d1d8de;
+  background: url(../images/checked.png) no-repeat;
+}
+#newBox.file-item img {
+  /* 宽度先注释掉 */
+  width: 80px;
+  /* height:72px; */
+  vertical-align: -34px;
+}
+/* 这个是写好的名字 */
+.folder-name {
+  display: block;
+  width: 150px;
+  height: 20px;
+  line-height: 20px;
+  color: #69737f;
+  margin: 0 auto;
+}
+/* 这个是输入时候的名字 */
+.editor {
+  display: none;
+  width: 120px;
+  height: 20px;
+  line-height: 20px;
+  color: #69737f;
+  margin: 0 auto;
+  text-align: center;
+}
+.breadmenu {
+  height: 48px;
+  border-bottom: 2px solid #e2e7ea;
+  background: #ecf1f7;
+  line-height: 48px;
+}
+.breadmenu .checkall {
+  float: left;
+  height: 48px;
+  width: 48px;
+  /*margin-right:12px;*/
+  text-align: center;
+}
+.checkall i {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid #d1d8de;
+  background: #fff;
+  font-size: 0;
+}
+.checkall .checked {
+  background: url('../images/checked.png') no-repeat;
+}
+.bread-nav a {
+  padding: 0 30px 0 14px;
+  height: 48px;
+  float: left;
+  color: #2f3334;
+  font-size: 14px;
+  line-height: 48px;
+  background: url('../images/yjt.png') no-repeat right center;
+  background-size: 40% 40%;
+  background-position-x: 30px 40px;
+}
+.bread-nav span {
+  float: left;
+  height: 48px;
+  padding: 0 14px;
+  color: #55addd;
+  line-height: 48px;
+  border-bottom: 2px solid #55addd;
+  cursor: default;
+}
+/* 树 */
+#navLists {
+  margin-top: 10px;
+  text-indent: 25px;
+  font-size: 20px;
+  line-height: 60px;
+  color: white;
+}
+.tree-title {
+  margin-top: 10px;
+  position: relative;
+  margin-bottom: 1px;
+}
+.tree-menu .active,
+.content .active {
+  background: red;
+  color: #fff;
+  font-size: 30px;
+}
+.tree-title:hover {
+  background: #adadad;
+}
+.tree-title span {
+  display: block;
+  padding-left: 10px;
+  line-height: 32px;
+  cursor: default;
+}
+.tree-title i {
+  float: left;
+  width: 34px;
+  height: 30px;
+  margin-left: 32px;
+  margin-top: -5px;
+}
+.tree-ico i {
+  background: url(../images/wdk.png) no-repeat 4px 4px;
+  background-size: contain;
+}
+.open i {
+  background: url(../images/ydk.png) no-repeat 2px 6px;
+  background-size: contain;
+}
+.tree-ico-none i {
+  background: none;
+}
+/* 移动的盒子 */
+#move {
+  width: 280px;
+  height: 400px;
+  background: #a7a5a5;
+  position: absolute;
+  z-index: 999;
+  border-radius: 16px;
+  top: 20px;
+  left: 550px;
+  display: none;
+}
+#move .over {
+  width: 220px;
+  height: 260px;
+  overflow: auto;
+  margin: 30px auto;
+}
+#move h2 {
+  font-size: 15px;
+  margin-left: 9px;
+}
+#move i {
+  background-size: 70% 70%;
+  margin-top: 1px;
+}
+#qd {
+  width: 70px;
+  height: 40px;
+  position: absolute;
+  top: 330px;
+  left: 168px;
+  font-size: 20px;
+  border-radius: 6px;
+  background: #69737f;
+  text-align: center;
+  line-height: 40px;
+}
+#qx {
+  width: 70px;
+  height: 40px;
+  position: absolute;
+  top: 330px;
+  left: 50px;
+  font-size: 20px;
+  border-radius: 6px;
+  background: #69737f;
+  text-align: center;
+  line-height: 40px;
+}
+#ttx {
+  width: 30px;
+  height: 30px;
+  background: url('../images/qx.png') center center no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 5px;
+  left: 233px;
+}
