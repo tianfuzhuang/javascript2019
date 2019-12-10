@@ -1,0 +1,195 @@
+.bigBox{
+    width: 1200px;
+    height: 300px;
+    display: flex;
+    margin: 100px auto;
+}
+
+.bigBox img{
+    width: 400px;
+    height: 300px;
+}
+
+/* 左向右滑 */
+.bigBox .big0{
+    position: relative;
+}
+.bigBox .big0 .left0{
+    height:300px;
+    width:40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: .4s;
+   
+}
+.bigBox .big0 .left0:hover{
+    width: 100%;
+    opacity: 0.5;
+    background:palevioletred ;
+}
+.bigBox .big1{
+    position: relative;
+}
+.bigBox .big1 .left1{
+    height:300px;
+    width:40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 1s;
+    background-color: transparent;  
+}
+.bigBox .big1 .left1:hover{
+    width: 100%;
+    opacity: 0.5;
+    background:plum;
+}
+
+.bigBox .big2{
+    position: relative;
+}
+.bigBox .big2 .left2{
+    height:300px;
+    width:40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 1s;
+    background-color: transparent;  
+}
+.bigBox .big2 .left2:hover{
+    width: 100%;
+    opacity: 0.5;
+    background:orangered ;
+}
+/* 上往下滑 */
+.bigBox .big0 .top0{
+    height:40px;
+    width:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 1s;
+     z-index: 999; 
+    background-color: transparent;   
+}
+.bigBox .big0 .top0:hover{
+    height: 300px;
+    opacity: 0.5;
+    background: brown ;
+}
+.bigBox .big1 .top1{
+    height:40px;
+    width:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 1s;
+     /* z-index: 999; */
+    background-color: transparent;  
+}
+.bigBox .big1 .top1:hover{
+    height: 300px;
+    opacity: 0.5;
+    background: brown ;
+}
+.bigBox .big2 .top2{
+    height:40px;
+    width:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 1s;
+     /* z-index: 999; */
+    background-color: transparent;  
+}
+.bigBox .big2 .top2:hover{
+    height: 300px;
+    opacity: 0.5;
+    background: brown ;
+}
+/* 从下向上 */
+.bigBox .big0 .bottom0{
+    height:40px;
+    width:100%;
+    position: absolute;
+   bottom:0px;
+    left:0;
+    transition: 0.5s;
+}
+.bigBox .big0 .bottom0:hover{
+   height: 300px; 
+    opacity: 0.5;
+    background: tomato ;
+}
+.bigBox .big1 .bottom1{
+    height:40px;
+    width:100%;
+    position: absolute;
+    bottom:0px;
+    left:0;
+    transition: 0.3s;
+}
+.bigBox .big1 .bottom1:hover{
+   height: 300px; 
+    opacity: 0.3;
+    background: tomato ;
+}
+.bigBox .big2 .bottom2{
+    height:40px;
+    width:100%;
+    position: absolute;
+    bottom:0px;
+    left:0;
+    transition: 0.3s;
+}
+.bigBox .big2 .bottom2:hover{
+   height: 300px; 
+    opacity: 0.3;
+    background: tomato ;
+}
+
+/* 从右向左 */
+.bigBox .big0 .right0{
+    height:300px;
+    width: 40px;;
+    position: absolute;
+    right:0px;
+   top: 0px;
+    transition: 0.3s;
+}
+.bigBox .big0 .right0:hover{
+   width : 100%; 
+   opacity: 0.3;
+    background: tomato ;
+}
+
+.bigBox .big1 .right1{
+    height:300px;
+    width: 40px;;
+    position: absolute;
+    right:0px;
+   top: 0px;
+    transition: 0.3s;
+}
+.bigBox .big1 .right1:hover{
+   width : 100%; 
+   opacity: 0.3;
+    background: tomato ;
+}
+
+.bigBox .big2 .right2{
+    height:300px;
+    width: 40px;;
+    position: absolute;
+    right:0px;
+   top: 0px;
+    transition: 0.3s;
+}
+.bigBox .big2 .right2:hover{
+   width : 100%; 
+   opacity: 0.3;
+    background: tomato ;
+}
+

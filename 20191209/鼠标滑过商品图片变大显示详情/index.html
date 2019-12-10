@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标滑过图片放大显示详情</title>
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="haha"></div>
+    </div>
+    <script src="../../第六周/jquery.min.js"></script>
+    <script>
+        let ary = ['images/c1.jpg', 'images/c2.jpg', 'images/c3.jpg'];
+        let ary2 = ['images/1.jpg', 'images/3.jpg', 'images/8.jpg'];
+        //渲染一波
+        function render() {
+            let $main = $('.main');
+            $.each($(ary), (i, item) => {
+                let $str = $(`<div><img src="${item}" big="${ary2[i]}"></div>`);
+                $main.append($str);
+            })
+        }
+        render();
+        //鼠标划上显示详情
+        let $detail = '';
+        $('.main div').mouseenter(function () {
+            let $this = $(this);
+            let $bigurl = $this.children('img').attr('src');
+
+            //如果没有创建大div我就创建一个
+            //if(!$detail){
+            $detail = $(`<div class="bigbox"><img src="${$bigurl}"></div>`)
+            $('.main').append($detail);
+        }).mouseleave(function (){
+            $detail.remove();
+        }).mousemove(function (ev){
+          let  pageY = ev.pageY +20 + 'px';
+          let  pageX = ev.pageX +20 + 'px';
+            $detail.css({'top':pageY,'left':pageX})
+
+        })
+    </script>
+</body>
+
+</html>

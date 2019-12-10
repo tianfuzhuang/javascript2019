@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>楼梯导航</title>
+    <link rel="stylesheet" href="./css/reset.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div id="globalBox">
+       <div class="nav">
+           <div class="navCenter md"></div>
+       </div>
+        <div class="main">
+            <div class="asideNav ">
+                <ul class="navlist clearfix">
+                    <li>魔兽世界</li>
+                    <li>魔兽争霸</li>
+                    <li>冰封王座</li>
+                    <li>澄海3C</li>
+                    <li>恶魔巫师</li>
+                    <li>暗影恶魔</li>
+                    <li>巫妖王</li>
+                    <li>大波妹火女</li>
+                </ul>
+            </div>
+            <div id="gd">  
+                 <ul class="rightMain"></ul> 
+            </div> 
+           <!-- <li><img src="" alt=""></li> -->
+        </ul>
+    
+        </div>
+    </div>
+    <script src="../../第5周(jQuery/jquery.min.js"></script>
+    <script>
+
+
+    let url = ['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg','images/6.jpg','images/7.jpg','images/8.jpg'];
+
+        function render(){
+            $(url).each(function(i,item){
+                $li = $(`<li><img src="${item}"  alt=""></li>`)
+                $('.rightMain').append($li);    
+                $('.navlist li').click(function (ev){
+                    let index = $(this).index();
+                    $('.rightMain').css({top:hh*index+ 'px'}) 
+                    $(this).css('backgroundColor','#0068cc').siblings().css({backgroundColor:'gray'})   
+                })    
+        })
+}
+ render();
+ let hh = -$('.rightMain li')[0].clientHeight; 
+//鼠标滚轮事件
+let num =0;
+ window.addEventListener('mousewheel',throttling(wheel,200));
+   
+ 
+ 
+ 
+ 
+ function wheel(ev){
+     //如果 ev.wheelDelta>0 表示上滚 图片向下向下否则表示下滚
+  
+      if(ev.wheelDelta>0){
+ 
+      
+       num++
+      if(num >7){
+          num = 7;
+      }   
+      }else{
+        num--
+        if(num<0){
+           num = 0;
+        }
+      }
+
+$('.rightMain')[0].style.top =  (hh*num) +'px';
+      $('.navlist li').eq(num).css('backgroundColor','#0068cc').siblings().css({backgroundColor:'gray'})
+    
+    }
+  //节流  
+  function throttling(cb,time){
+        let prevtime = 0;
+        return function(...arg){
+            let nowTime = +new Date;
+            // console.log(nowTime - prevtime)
+            if(nowTime - prevtime > time){
+                cb.call(this,...arg);
+            }
+            prevtime = nowTime;
+        }
+    }
+    
+    
+    
+    
+    </script>
+</body>
+</html>

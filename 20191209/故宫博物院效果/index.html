@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="bigBox">
+    </div>
+    <script src="../jquery.min.js"></script>
+    <script>
+        let bigBox = document.querySelector('.bigBox')
+        let url = ["./images/c1.jpg", "./images/c2.jpg", "./images/c3.jpg"]
+
+        function render() {
+            $.each($(url), (i, item) => {
+                let $str = $(`<div class="big${i}">
+              <div class="left${i}"></div>
+              <div class="top${i}"></div>
+              <div class="right${i}"></div>
+              <div class="bottom${i}"></div>
+              <img src="${item}" alt=""></div>`);
+                $('.bigBox').append($str)
+            })
+        }
+        render()
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+body,html{
+    width: 100%;
+    height: 100%;
+}
+.nav{
+    width: 100%;
+    height: 70px;
+  
+}
+.md{
+    width:1000px ;
+    height: 70px;
+    background: url('../images/nav.png') no-repeat;
+    margin: 0 auto;    
+}
+.asideNav .navlist {
+    margin-left: 25px;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 55px;
+    font-size: 20px;
+    float: left;
+  
+}
+.asideNav .navlist li{
+    width:160px;
+    height: 55px;
+    border:1px solid blanchedalmond;
+    border-radius: 6px;
+    background: darkgray;
+}
+.asideNav .navlist li:hover{
+    background: cornflowerblue;
+}
+#gd{
+    width: 834px;
+    height: 454px;
+    float: left;
+    position: relative;
+    margin-top: 12px;
+    margin-left: 2px;
+     overflow: hidden; 
+ 
+
+}
+.rightMain{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition:all linear 1s;
+}
+.rightMain li img{
+    width: 834px;
+    height: 454px;
+  background-size: contain; 
+}
