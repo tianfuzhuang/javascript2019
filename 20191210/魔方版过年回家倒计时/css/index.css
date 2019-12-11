@@ -1,0 +1,202 @@
+*{
+    margin:0;
+    padding: 0;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    background: url('../images/1348814416809.jpg') center center no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.bigbox {
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+    margin: 236px auto;
+}
+
+.bigbox div {
+
+    width: 600px;
+    height: 100px;
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+}
+
+
+
+
+.bigbox .box1 div{
+    border-radius:4px ;
+    width: 100px;
+    height: 100px;
+    background: #2F3430;
+  text-align: center;
+}
+.bigbox .box1 .hour1{
+    display: flex;
+    justify-content: center; 
+    line-height: 100px;
+    font-size:50px;
+    color: #fff;
+}
+.bigbox .box1 .day1{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+     line-height: 100px;
+     font-size:50px;
+    color: #fff;
+}
+.bigbox .box1 .minute1{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    line-height: 100px;
+    font-size:50px;
+    color: #fff;
+}
+.bigbox .box1 .second1{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    line-height: 100px;
+    font-size:50px;
+    color: #fff;
+    visibility: hidden;  
+}
+.setTime{
+    width: 400px;
+    height: 40px;
+    margin-top: 3px;
+    margin-right: 50px;
+}
+.setTime input{
+  width: 20px;
+  height:20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.setTime input:nth-child(1){
+    width: 32px;
+    height: 20px;
+}
+.bigbox span:nth-child(1){
+    display: block;
+    position: absolute;
+    top: 23px;
+    left: 130px;
+    font-size:40px ;
+    color:#2F3430;
+}
+.bigbox span:nth-child(2){
+    display: block;
+    position: absolute;
+    top: 23px;
+    left: 281px;
+    font-size:40px ;
+    color:#2F3430;
+}
+.bigbox span:nth-child(3){
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 444px;
+    font-size:40px ;
+    color:#2F3430;
+}
+.baidu{
+    width: 200px;
+    height: 100px;
+    background: url('../images/bd.png') center center no-repeat;
+    position: absolute;
+    right : 0;
+    bottom: 0;
+    opacity: 0.7;
+}
+/* .w2020{
+  width: 250px;
+  height: 110px;
+  background: url('../images/11.png') center center no-repeat;
+  background-size: cover;
+  position: absolute;
+  top:280px;
+  left: 35px;
+} */
+
+
+
+
+/* 3D魔方 */
+.wrap{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 278px;
+    left: 860px;
+    perspective: 5000px;
+      
+}
+/* .wrap:hover .box{
+    transform:rotateX(270deg); 
+} */
+
+.wrap .box{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin:50% 50% 50px;
+    transition:1s;
+   
+}
+.wrap .box li{
+    display: block;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background:#2F3430;
+    border-radius:4px ;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    line-height: 100px;
+    font-size:50px;
+    color: #fff;
+}
+.wrap .box li:nth-child(1){
+    
+   transform: rotateY(-90deg);
+   transform-origin: left;
+}
+.wrap .box li:nth-child(2){
+  
+   transform: rotateY(90deg);
+   transform-origin:right;
+
+
+}
+.wrap .box li:nth-child(3){
+  
+   transform: rotateX(90deg);
+   transform-origin:top;
+   width: 100px;
+   height: 100px;
+  
+}
+.wrap .box li:nth-child(4){
+ transform: rotateX(-90deg);
+ 
+   transform-origin:bottom;
+}
+.wrap .box li:nth-child(5){
+
+   transform:translateZ(100px);
+}
+.wrap .box li:nth-child(6){
+transform: rotateX(180deg);
+ 
+ }

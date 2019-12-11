@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #div {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            margin: 2% auto;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transform: scale(.5);
+            /* 缩放*/
+        }
+        #div div {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 3s;
+            background:url('images/zf_cube1.png');
+            background-size: 500px 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        let w = 50 ;      //子元素的大小,用来定位和图片位置的更改
+        let str = ''  ;   //定义一个空字符串用来接收新建的元素,防止多次的DOM操作
+        for (let i = 0; i < 10; i++) {    //循环为每一行的个数
+            for (let j = 0; j < 10; j++) {   //循环为每一列的个数
+                str += `<div data-x = "${-i * w}" data-y = "${-j * w}" style ="background-position:${-i * w + 'px'} ${-j * w}px; top:${j * w}px;left:${i * w}px"></div>`   //创建元素,并根据每一次循环获取到x轴和y轴的定位
+            }
+        }
+        div.innerHTML = str;  //将创建好的所有元素给div
+        let divchild = div.children //获取到创建的所有的元素
+        function sj(a, b) {    //获取随机数
+            return Math.round(Math.random() * (b - a)) + a
+        }
+        let a =1   //定义一个变量用来修改每一次的图片
+        div.onclick = function () {   //添加点击触发效果
+            for (let i = 0; i < divchild.length; i++) {   //循环所有的元素,以改变所有元素的定位和图片
+                let { x, y } = divchild[i].dataset   //获取到在创建元素时向元素中添加的定位
+                divchild[i].style.top = -y * 1 + sj(-1000, 1000) + 'px';   //添加随机数随机改变元素的位置实现分散
+                divchild[i].style.left = -x * 1 + sj(-1000, 1000) + 'px';  //同上
+                divchild[i].style.opacity = 0 ;  //透明度变0
+                divchild[i].style.transform = `skewX(${sj(-90, 90)}deg) translateZ(${sj(-1000, 1000)}px)`  //添加skewX达到每一个元素不同的变形,添加translateZ使所有的元素都向外渐变
+            }
+            setTimeout(()=>{    //添加定时器再一段时间后将所有元素的定位返回,并且改变他的图片
+                a++ ;             //每一次都使变量加一,达到图片不停变化的效果
+                if(a>6){         //当图片的个数达到最大的时候变为1
+                    a=1;
+                }
+                for(let i=0;i<divchild.length;i++){   //循环所有的元素,以改变元素的定位和图片
+                    const{x,y} = divchild[i].dataset;      //获取到元素创建时向元素中添加的定位
+                    divchild[i].style.top = -y*1 + 'px';    //通过初始时的定位将定位改回初始值
+                    divchild[i].style.left = -x*1 + 'px';
+                    divchild[i].style.transform = 'skewX(0deg)';   //还原
+                    divchild[i].style.opacity = 1 ;     //使元素的透明度逐渐变回
+                    divchild[i].style.backgroundImage = `url('images/zf_cube${a}.png')`;   //将图片改为最新的图片
+                }
+            },3000)
+        }
+    </script>
+</body>
+
+</html>

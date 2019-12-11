@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>myhomepage</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="images/yh.jpg">
+</head>
+
+<body>
+    <!-- <div class="w2020"></div> -->
+    <div class="baidu"></div>
+    <!-- 3D盒子 -->
+    <div class="wrap">
+        <ul class="box">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+    </div>
+    <div class="setTime">
+        <input type="text" placeholder="2020" class="year"><span>年</span>
+        <input type="text" placeholder="01" class="month"><span>月</span>
+        <input type="text" placeholder="25" class="day"><span>日</span>
+        <input type="text" placeholder="00" class="hour"> <span>时</span>
+        <input type="text" placeholder="00" class="minute"> <span>分</span>
+    </div>
+    <div class="bigbox">
+
+        <div class="box1">
+            <span>天</span>
+            <span>时</span>
+            <span>:</span>
+            <strong class="setTime1"></strong>
+            <div class="day1"></div>
+            <div class="hour1"></div>
+            <div class="minute1"></div>
+            <div class="second1"></div>
+        </div>
+
+    </div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script>
+    //本地事件版
+    //设置春节时间
+    let setTime = '2020/01/25 00:00';
+
+    //手动自定义时间
+    $('.setTime input').blur(function () {
+        let y1 = $('.year').val();
+        let m1 = $('.month').val();
+        let d1 = $('.day').val();
+        let h1 = $('.hour').val();
+        let mi1 = $('.minute').val();
+        setTime = `${y1}/${m1}/${d1} ${h1}:${mi1}`;
+        futureTime = new Date(setTime);
+        //console.log( futureTime);
+
+
+    })
+    //设置未来的时间 
+    let futureTime = new Date(setTime);
+
+    function computed() {
+        let nowTime = new Date();
+        let countTime = futureTime - nowTime;
+        //console.log(countTime);
+
+        let day = Math.floor(countTime / (24 * 60 * 60 * 1000));
+        countTime -= (day * 24 * 60 * 60 * 1000)
+        //console.log(day);
+
+        let hour = Math.floor(countTime / (60 * 60 * 1000));
+        countTime -= (hour * 60 * 60 * 1000);
+        let minute = Math.floor(countTime / (60 * 1000));
+        countTime -= minute * (60 * 1000);
+        let second = Math.floor(countTime / (1000));
+
+        //小于10补零
+        $('.bigbox .day1').html(day < 10 ? '0' + day : day);
+        $('.bigbox .hour1').html(hour < 10 ? '0' + hour : hour);
+        $('.bigbox .minute1').html(minute < 10 ? '0' + minute : minute);
+        $('.bigbox .second1').html(second < 10 ? '0' + second : second);
+        // console.log(second < 10 ? '0' + second : second);
+        $('.wrap .box li').html(second < 10 ? '0' + second : second)
+    }
+
+
+    //上来先执行一次
+    computed();
+    //每一秒执行一次computed
+    timer = setInterval(computed, 1000);
+    //点击百度跳转
+    
+    let baidu = document.querySelector('.baidu')
+    baidu.onclick = function () {
+        window.location.href = 'http:www.baidu.com';
+    }
+   let num=0;
+    function rotate() {
+        num++;
+        $('.wrap .box')[0].style.transform =`rotateX(${90*num}deg)`
+       console.log(1);   
+    }
+    rotate();
+    timer2 = setInterval(rotate, 1000);
+</script>
+
+</html>
