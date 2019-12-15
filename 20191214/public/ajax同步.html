@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax同步</title>
+</head>
+<body>
+   用户名 <input type="text" name="" id="haha">
+   密码 <input type="password" name="" id="">
+</body>
+<script>
+    //fetch - get方式请求
+/*     haha.onblur = function(){
+    fetch('/get?user='+haha.value).then(d=>d.json()).then(d=>{       
+    console.log(d);      
+    })
+} */
+    //fetch - post方式请求1
+ /*    haha.onblur = function (){
+    fetch('/post',{
+        method:'post',
+        body:`user=${this.value}`,
+        headers:{'content-type':'application/x-www-form-urlencoded'}
+    }).then(d=>d.json()).then(d=>{
+    console.log(d);
+    })     
+    } */
+
+//fetch - post 方式请求2
+// haha.onblur = function(){
+//     fetch('/post',{
+//         method:'post',
+//         body:''+ new URLSearchParams({
+//           user:this.value
+//         }),headers:{
+//         'content-type':'application/x-www-form-urlencoded'
+//         }
+//     }).then(d=>d.json()).then(
+//         d=>{
+//             console.log(d);
+//         }
+//     )
+// }
+//xhr - get 方式
+// haha.onblur = function (){
+//    let xhr = new XMLHttpRequest;
+//    xhr.open('get','/get?user='+this.value,true);
+//    xhr.send();
+//    xhr.onload = function(){
+//        console.log(xhr.responseText);   
+//    }
+// }
+// xhr - post 方式
+/* 
+haha.onblur = function (){
+    let xhr = new XMLHttpRequest;
+    xhr.open('post',true);
+    xhr.setRequestHeader('content-type','application-x-www-form-urlencoded');
+    xhr.send('user='+this.value);
+    xhr.onload = function(){
+            console.log(xhr.responseText);
+}
+ */
+
+//ajax - 同步
+
+user.onblur = function(){
+        let xhr = new XMLHttpRequest;
+        xhr.open('get','/sleep?name='+this.value,false);//同步
+        xhr.send();
+        console.log(xhr.responseText);
+        console.log('执行下面的10000行代码');
+    }
+
+
+
+
+</script>
+</html>

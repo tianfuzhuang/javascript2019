@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码。 */
+        /*   抛出
+如果参数中没有合法的表达式和语句，则抛出 SyntaxError 异常。
+
+如果非法调用 eval()，则抛出 EvalError 异常。
+
+如果传递给 eval() 的 Javascript 代码生成了一个异常，eval() 将把该异常传递给调用者。 */
+        eval("2+3") //  5
+
+        let val = '1';
+        let val2 = '+';
+        let val3 = '2';
+
+
+        // console.log(eval(val + val2 + val3));//尽量把能够转成js运行的代码尽量转了
+        // let ary = '[1,2,3,4]';
+        // let json = '{"name":1}';
+
+        // (function(){})
+
+
+        // console.log(eval('('+json+')'));
+    </script>
+
+
+</body>
+
+</html>

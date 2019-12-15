@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    注册的用户名:<input id="user" type="text"/><span id="s"></span> </br>
+    注册的密码:<input type="password" id="pw"/>
+    <button id="btn">提交</button>
+
+    <script>
+      let url = 'https://www.baidu.com/s?wd=URLSearchParams&rsv_spt=1&rsv_iqid=0xc0284e42000cc1f1&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=0&rsv_dl=ib ' ;
+     
+      let  urlSearchParam= new URLSearchParams(url);
+      
+     
+      console.log(urlSearchParam.get('rsv_spt'));//1
+      console.log(urlSearchParam.get('issp'))//1
+
+        let obj = new URLSearchParams({
+        user:'haha',
+        pw:12345,
+        age:'10'
+    });
+
+    console.log(''+obj)
+
+//fetch -post方式请求
+// user.onblur = function(){
+//     fetch('/post',{
+//         method:'post',
+//         body:''+new URLSearchParams({
+//             user:this.value
+//         }),
+//         headers:{
+//             'content-type':'application/x-www-form-urlencoded'
+//         }
+//     }).then(d=>d.json()).then(d=>{
+//         console.log(d);   
+//     })
+// }
+ //fetch -get 方式请求
+ user.onblur = function(){
+     fetch('/get?user='+this.value).then(d=>d.json()).then(d=>{
+         console.log(d);
+         
+     })
+ }       
+        
+        
+        
+        
+        
+    </script>
+</body>
+</html>
