@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="/public/css/weibo.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="nArea">
+        <!--留言-->
+        <div class="takeComment">
+            <textarea name="textarea" class="takeTextField" id="text"></textarea>
+            <div class="takeSbmComment">
+                <input type="button" id="submit" class="inputs" value="" />
+                <span>(可按 Enter 回复)</span>
+            </div>
+        </div>
+        <!--已留-->
+        <div class="commentOn">
+            <div class="messList" id="div1" style="height:502px">
+
+            </div>
+            <div class="page" id="page">
+                <!-- <a href="#" class="active">1</a> -->
+                <!-- <a href="#">2</a> -->
+            </div>
+        </div>
+    </div>
+    <script>
+        /*
+        只要是ajax请求，优先把数据打印出来看看
+    */
+
+        window.history.pushState({
+            num: 1
+        }, '', 'http://localhost:88/index.html' + 1);
+
+        getdata();
+
+        function getdata(num=1) {
+            //刷新就请求第一页的数据
+            fetch('/api/weibo?act=get&page=' + num).then(d => d.json()).then(d => {
+                div1.innerHTML = '';
+                d.reverse();
+                d.forEach(e => {
+                    render(e);
+
+                });
+
+
+                /* 数据请求成功后获取删除 */
+                d.reverse();
+                let cut = document.querySelectorAll('.reply .cut');
+                cut.forEach((item, i) => {
+                    item.onclick = function () {
+                        fetch('/api/weibo?act=del&id=' + d[i].id).then(c => c.json()).then(c => {
+                            getdata(1);
+                            getPage();
+                        });
+                    }
+                    /* 点赞功能 */
+                    let up = item.previousElementSibling.previousElementSibling;
+                    up.onclick = function () {
+                        fetch('/api/weibo?act=like&id=' + d[i].id).then(d => d.json()).then(d => {
+                            if (d.code == 0) {
+                                getdata(window.history.state.num);
+                            }
+                        })
+                    }
+
+                    /* 踩的功能 */
+                    let down = item.previousElementSibling;
+                    down.onclick = function () {
+                        fetch('/api/weibo?act=dislike&id=' + d[i].id).then(d => d.json()).then(
+                            d => {
+                                if (d.code == 0) {
+                                    getdata(window.history.state.num);
+                                }
+                            })
+                    }
+                })
+
+            });
+        }
+        /*
+            点击发送按钮，发送消息
+        */
+
+        function toDou(n) {
+            return n < 10 ? '0' + n : '' + n;
+        }
+        submit.onclick = function () {
+            //一点击提交就让页码变为一
+            window.history.pushState({
+                num: 1
+            }, '', 'http://localhost:88/index.html' + 1);
+            let {
+                value
+            } = text;
+            
+            //请求成功之后才能插入页面
+            fetch('/api/weibo?act=add&content=' + value).then(d => d.json()).then(d => {
+                // console.log(d);
+                if (d.code === 0) {
+                    /*
+                        如果在使用服务器时间的时候，发现设置的时间为1970，直接*1000,因为服务器时间是以秒来计算的
+                    */
+                    // console.log(d);
+                    //因为d里面没有content，但是render里需要content，所以给数据添加了一个content属性
+                    d.content = value;
+                    text.value = '';
+                     getdata();
+                     render(d);
+                }
+            })
+        }
+
+        function render(d) {
+            let o = new Date(d.time);
+            let year = o.getFullYear();
+            let moun = o.getMonth() + 1;
+            let date = o.getDate();
+            let h = o.getHours();
+            let m = o.getMinutes();
+            let s = o.getSeconds();
+            div1.innerHTML = `
+            <div class="reply">
+                    <p class="replyContent">${d.content}</p>
+                    <p class="operation">
+                        <span class="replyTime">${year}-${toDou(moun)}-${toDou(date)} ${toDou(h)}:${toDou(m)}:${toDou(s)}</span>
+                        <span class="handle">
+                            <a href="javascript:;" class="top">${d.like}</a>
+                            <a href="javascript:;" class="down_icon">${d.dislike}</a>
+                            <a href="javascript:;" class="cut">删除</a>
+                        </span>
+                    </p>
+            </div>
+        ` + div1.innerHTML;
+        }
+
+        // function renderPage(p) {
+        //     page.innerHTML += `<a href="#" class="active">${p}</a>`;
+
+        // };
+
+        // function pp() {
+        //     page.innerHTML = '';
+        //     fetch('/api/weibo?act=get_page_count').then(d => d.json()).then(d => {
+        //         for (let i = 1; i <= d.count; i++) {
+        //             renderPage(i);
+        //         }
+        //     });
+        // };
+        // pp();
+
+
+        // page.onclick = function (ev) {
+        //     if (ev.target.tagName === "A") {
+        //         //造假的地址
+        //         let state = `${ev.target.innerText}`
+        //         window.history.pushState({
+        //             num: state
+        //         }, '', 'http://localhost:88/index.html'+state);
+        //         //window.location.hash = state ;
+        //         getdata(state); 
+        //         console.log( window.history.state.num);                   
+        //     }
+
+
+        // }
+
+        function getPage() {    
+            fetch('/api/weibo?act=get_page_count').then(d => d.json()).then(d => {
+             page.innerHTML = '' 
+                for (let i = 0; i < d.count; i++) {
+                    let a = document.createElement('a');
+                    a.innerText = i + 1;
+                    //默认第一页
+                    if (i === 0) {
+                        a.className = 'active'
+                    }
+                    page.appendChild(a)
+                }
+                let as = document.querySelectorAll('#page a')
+                let qx = 0
+                as.forEach((ele, i) => {
+                    ele.onclick = function (ev) {
+                        as[qx].className = ''
+                        this.className = 'active';
+                        getdata(this.innerText);
+                        qx = i;
+                        window.history.pushState({
+                            num: this.innerText
+                        }, '', 'http://localhost:88/index.html' + this.innerText);
+                        console.log(window.history.state.num);
+
+                    }
+                })
+            })
+        }
+        getPage()
+    </script>
+</body>
+
+</html>
