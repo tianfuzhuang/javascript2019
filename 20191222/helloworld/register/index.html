@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 400px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            border:1px solid rgb(245, 21, 21);
+            margin: 100px auto;
+            justify-content: center;
+            align-items: center;
+        }
+        .main div{
+            width: 300px;
+            height: 30px;
+            
+
+        }
+        .main div span{
+           display: inline-block;
+            width: 60px;
+            height: 50px;
+            text-align: right;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div>
+            <span>用户名</span>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <span>密码</span>
+            <input type="password" id="pw">
+        </div>
+        <button id="btn">注册</button>
+    </div>
+    <script>
+    name.onblur = async function(){
+        let data = await fetch('/post',{
+            body:'user='+this.value,
+            headers:{
+                'conten-type':'application/x-www-form-urlencoded'
+            },
+            method:'post'
+        }).then(e=e.json());
+    }
+    btn.onclick = function(){
+        fetch('register?user='+us.value+'&password='+pw.value).then(d=>d.json()).then(d=>{
+            if(d.code === 0){
+                alert('注册失败')
+            }else if(d.code === 1){
+                alert('注册成功')
+            }else if(d.code === 2){
+                alert(d.msg);
+            }
+        })
+    }
+    
+    
+    
+    
+    
+    </script>
+
+</body>
+
+</html>
