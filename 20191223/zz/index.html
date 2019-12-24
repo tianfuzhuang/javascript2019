@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.onclick = async function(){
+            let data = await fetch('/register',{
+                method:'post',
+                
+                headers:{
+                    'content-type':'application/x-www-form-urlencoded'
+                },body:new URLSearchParams({
+                    user:'haha',
+                    password:'123'
+                })
+                    
+            }).then(d=>d.json());
+            console.log(data);
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+ </script>
+</body>
+</html>
