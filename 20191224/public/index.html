@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./axios.min.js"></script>
+    <script>
+  document.onclick =function() {
+axios.post(
+    '/post','zz=1&haha=2'
+)
+.then(d=>d.data).then(d=>{
+    console.log(d);
+    
+})
+} 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>种菊花</title>
+<style>
+#btn{
+    width: 120px;
+    height: 30px;
+    display: block;
+    margin: 20px auto;
+}
+#flower{
+    width: 300px;
+    height: 300px;
+    margin:80px auto ;
+    background: url('1.jpg');
+    border-radius: 50%;
+    /* transform: rotateZ(1deg); */
+}
+
+
+
+</style>
+</head>
+<body>
+    <button id="btn">点击种菊花</button>
+    <div id="flower"></div>
+<script src="axios.min.js"></script>
+<script>
+let num = '';
+function fn(){
+    num++
+    flower.style.transform 
+    = ` rotateZ(${num*5}deg)`
+}
+
+
+
+   axios.interceptors.request.use(async function(config){
+    timer = setInterval(fn,17)
+    return config;
+   });
+   axios.interceptors.response.use(async function(config){
+     clearInterval(timer) ;
+    return config;
+   });
+
+    
+//          clearInterval(timer);
+//         console.log(config)
+//         config.user = config.data.user;
+//         return config;
+// });
+btn.onclick = async function(){
+    let a = await axios.get('/get?flower=1').then(d=>d.data).then(d=>{
+        console.log(d);
+        
+    })
+
+}
+
+
+
+</script>
+
+</body>
+
+</html>
