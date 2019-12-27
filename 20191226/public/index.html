@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    111
+    <button id="btn">点我</button>
+    <script src="axios.min.js"></script>
+    <script>
+    btn.onclick = function(){
+        axios.get('/get?zz=1&haha=2').then(({data:d})=>{
+                 console.log(d);
+                 
+        })
+    }
+    
+    
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

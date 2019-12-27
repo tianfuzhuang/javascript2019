@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+
+
+
+let sql = [{
+    user:'tfz',
+    pw:'123'
+}]
+
+module.exports = sql;

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .wrap{
+        width: 300px;
+        height: 100px;
+        margin: 100px auto;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div>
+            <span>登录账户</span><input type="text" id="user" autocomplete="off">
+        </div>
+        <div>
+            <span>登录密码</span><input type="password" id="pw">
+        </div>
+        <div><button id="register">注册</button><button id="login">登录</button></div>
+    </div>
+    <script src="./axios.js"></script>
+    <script>
+       register.onclick = function(){
+           window.location.href = './register.html'
+       }
+       login.onclick = function(){
+         let v1 = user.value;
+         let v2 = pw.value;
+         let data = {user:v1,pw:v2}
+         axios.post('/login',data).then(({data:d})=>{
+             console.log(d); 
+             if(d.code == '0') {
+                 window.location.href = './rsdf.html'
+             }         
+         })
+       }
+       
+    
+    </script>
+</body>
+
+</html>
