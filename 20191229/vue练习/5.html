@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="./vue.js"></script>
+	</head>
+ 
+	<body>
+		<div id="app">
+            <p v-html="rehtml"></p>
+			<input type="text" v-model="message">
+			<p>{{message}}</p>
+		</div>
+		<script>
+        let message = 'hello word'
+		let app = new Vue({
+			el:'#app',
+			data:{
+                message:message,
+                rehtml:`<p style="background-color: yellow;">${message}</p>`
+			}
+        })
+    
+        
+		</script>
+	</body>
+</html>

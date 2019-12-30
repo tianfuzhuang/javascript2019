@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">b
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <!-- <div id="app2">
+        <span v-bind:title="message">
+            鼠标悬停几秒钟查看此处动态绑定的提示信息！
+          </span>
+    </div> -->
+    <div id="app3">
+       <p v-if='seen'>现在你看到我了</p>
+	   {{message}}
+    </div>
+    <button id="btn">点我</button>
+    <script>
+    // let app = new Vue({
+    //     el:'#app2',
+    //     data:{
+    //         message: '页面加载于 ' + new Date().toLocaleString()
+    //     }
+
+    // })
+    let app = new Vue({
+        el:"#app3",
+        data:{
+			message:11111,
+            seen:true
+        }
+    })
+     btn.onclick = function(){
+         if(app.seen == true){
+             app.seen = false;
+         }else{
+             app.seen = true;
+         }
+     }
+
+    </script>
+</body>
+</html>
