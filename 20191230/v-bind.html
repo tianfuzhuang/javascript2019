@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+    <style>
+    .zz{
+        background: green;
+    }
+    
+    
+    
+    </style>
+</head>
+<body>
+    <div id="box" v-bind:style="haha">
+    <ul>
+        <li :class="{zz}">
+            今天
+        </li >
+        <li v-bind="{data:1}">
+            天气
+        </li >
+        <li>
+            不错
+        </li>
+    </ul>
+   </div> 
+    <script src="./vue.js"></script>
+    <script>
+    new Vue({
+        el:"#box",
+        data:{
+           haha:{
+               background:'yellow'
+           },
+           zz:true,
+           ee:{
+               dd:1
+           }
+          
+        }
+    })
+    
+    
+    
+    </script>
+</body>
+</html>

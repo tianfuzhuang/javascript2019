@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+    <section class="todoapp">
+        <div >
+            <header class="header" >
+                <h1>todos</h1>
+                <input class="new-todo" placeholder="请输入内容" @blur="addAry" v-model="val" @keyup.13="addAry">
+            </header>
+            <section class="main">
+        
+                <input class="toggle-all" v-model="toggle" type="checkbox"  @click="all">
+                <ul class="todo-list">
+                    <li class="active" v-for="(item, index) in setAry">
+                        <div class="view">
+                            <input class="toggle" type="checkbox" v-model="item.checked">
+                            <label>{{item.txt}}</label>
+                            <button class="destroy"></button>
+                        </div>
+                        <input class="edit" />
+                    </li>
+                </ul>
+            </section>
+            <footer class="footer">
+                <span class="todo-count">
+                    <strong>{{ww}}</strong>
+                    <span>条未选中</span>
+                </span>
+                <ul class="filters" @click="getval1">
+                    <li>
+                        <a href="#/all" class="selected">全部</a>
+                    </li>
+                    <li>
+                        <a href="#/unchecked" class="">未选中</a>
+                    </li>
+                    <li>
+                        <a href="#/checked" class="">已选中</a>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+    </section>
+    <script src="../../vue.js"></script>
+    <script>
+        // editing completed
+        // editing ''
+        // ''
+        //completed
+        let num = 2;
+        new Vue({
+            el: '.todoapp',
+            data: {
+                toggle:'',
+                val: '',
+                val1: '',
+                //==>未选中
+                ww:'0',
+                ary: [{
+                        id: 0,
+                        txt: '哈哈',
+                        checked: false,
+                        onoff: false
+                    },
+                    {
+                        id: 1,
+                        txt: '呵呵',
+                        checked: false,
+                        onoff: false
+                    }
+                ]
+            },
+            methods: {
+                //=>点击添加数据
+                addAry() {
+                    if (this.val == '') return;
+                    num++;
+                    this.ary.push({
+                        id: num,
+                        txt: this.val,
+                        checked: false,
+                        onoff: false
+                    });
+                    this.val = '';
+                },
+                getval1(ev) {
+                    if(ev.target.tagName==='A'){ 
+                    this.val1 = ev.target.innerText;
+                    console.log(this.val1);
+                }
+
+                },
+                all(ev) {
+                   this.ary.forEach(element => {
+                      element.checked = !this.toggle;
+                   });
+                },
+                wxz(){
+                   let len=this.ary.filter(item=>item.checked==false);
+                     this.ww = len.length;
+                     console.log(ww);
+                      
+                }
+            },
+            computed: {
+                setAry() {
+                    const {
+                        val1,
+                        ary
+                    } = this;
+                    return ary.filter(item => {
+                        switch (val1) {
+                            case '全部':                      
+                                return item
+                            ;
+                            case '已选中':
+                            
+                                return item.checked;
+                            case '未选中':
+                                return !item.checked;
+                            default:
+                                return item;
+                        }
+                    })
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
