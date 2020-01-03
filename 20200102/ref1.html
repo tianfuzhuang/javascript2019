@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+   <div id="app">
+          <button
+          ref='box'
+          @click='fn'
+          >
+           点击取值1111111111
+          </button
+
+          >
+   </div> 
+   <script>
+   new Vue({
+       el:'#app',
+       data:{
+           val:'1111111111111'
+       },
+       methods:{
+           fn(){
+               console.log(this.$refs.box.innerText)
+           }
+       }
+   })
+   
+   
+   
+   </script>
+</body>
+</html>

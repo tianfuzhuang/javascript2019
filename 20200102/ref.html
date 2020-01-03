@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    /* 
+    ref:为了让你快速定位一个元素组件
+    定义:元素或者组件上添加ref的属性即可
+    <div ref="box">
+    获取
+    this.$refs.box
+    */
+    new Vue({
+        el:"#app",
+        data:{
+            val:'123456'
+        },
+        methods: {
+            fn(){
+                console.log(this.$refs.box);
+            }
+        },
+    })
+    
+    
+    
+    </script> 
+</body>
+</html>

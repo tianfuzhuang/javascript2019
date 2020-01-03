@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        模板中顶层只能有一个元素
+     -->
+     
+    <div id="box">
+      <mycp1></mycp1>
+      <mycp2></mycp2>
+    </div>
+    <script>
+        const mycp1 = {
+        template: `<ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+                  </ul>`
+        },
+        const mycp2={
+        template:
+        `<div>11111111111111
+            <mycp1></mycp1>
+        </div>`,
+        components:{
+            mycp1
+        }
+        };
+        new Vue({
+            el: "#box",
+            data:{
+
+            },
+            components:{
+                mycp1,
+                mycp2
+            }
+        })
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
