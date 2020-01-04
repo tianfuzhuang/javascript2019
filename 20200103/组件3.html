@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click='padd'>{{num}}</button>
+       <imchild :cc="num" @mychild="paddsss" ></imchild>
+    </div>
+
+    <template id="imchild">
+        <div>
+            <button @click='add'>{{cnum}}</button>
+        </div>
+    </template>
+
+    <script>
+const imchild={
+    template:'#imchild',
+    props:['cc'],
+    data(){
+        return{
+           cnum : this.cc
+        }
+    },
+    methods: {
+        add(){
+            this.cnum++;
+            this.$emit('mychild',this.cnum)
+        },
+    },
+}
+
+    new Vue({
+        el:"#app",
+        data:{
+            num:2
+        },
+        methods: {
+            padd(){
+                this.num++
+            },
+            paddsss(val){
+                this.num=val
+            }
+        },
+        components:{
+            imchild
+        }
+
+    })
+    
+    
+    
+    
+    </script>
+</body>
+</html>

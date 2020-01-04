@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <!-- <style>
+        [v-cloak]{
+            display: none;
+        }
+        </style> -->
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+    <section class="todoapp">
+        <div>
+            <header class="header">
+                <h1>todos</h1>
+                <input class="new-todo" placeholder="请输入内容" v-model="val" @keyup.13="addAry">
+            </header>
+            <section class="main">
+                <input class="toggle-all"  
+                 :checked="qx"
+                  type="checkbox" @click="all"
+                >
+                <ul class="todo-list">
+                    <li :class="{completed:item.checked,active:true} " 
+                    v-for="(item,index) in setAry" 
+                    :key="item.id">
+                        <div class="view">
+                            <input class="toggle" 
+                            type="checkbox"
+                            v-model="item.checked">
+                            <label @dblclick="change(item,index)"
+                            v-show="myitem==item?false:true"
+                            v-cloak
+                            >{{item.txt}}
+                            </label>
+                            <!-- <button class="destroy"></button> -->
+                        </div>
+                        <input 
+                        ref='edits' 
+                        class="edit" 
+                        v-model="dblafter" 
+                        v-show="myitem==item"
+                        @keyup.enter="myenter(item,index)"
+                        @keyup.Esc="myesc"
+                        @blur="myenter(item,index)"
+                         />
+                    </li>
+                </ul>
+            </section>
+            <footer class="footer">
+                <span class="todo-count">
+                    <strong>{{wxz}}</strong>
+                    <span>条未选中</span>
+                </span>
+                <ul class="filters">
+                    <li v-for="(ele, i) in btns">
+                        <a :href="ele.src" :class="{selected:ele.istrue}" @click="sele(i)">{{ele.btntxt}}</a>
+                    </li>
+                    <!-- <li>
+                        <a href="#/unchecked" class="" @click="val1='未选中'">未选中</a>
+                    </li>
+                    <li>
+                        <a href="#/checked" class="" @click="val1='已选中'">已选中</a>
+                    </li> -->
+                </ul>
+            </footer>
+        </div>
+    </section>
+
+    <script>
+        // editing completed
+        // editing ''
+        // ''
+        //complete
+        new Vue({
+            el: '.todoapp',
+            data: {
+                btns: [{
+                        src: "#/all",
+                        btntxt: "全部",
+                        istrue: true,
+                    },
+                    {
+                        src: '#/unchecked',
+                        btntxt: "未选中",
+                        istrue: false,
+                    },
+                    {
+                        src: "#/checked",
+                        btntxt: "已选中",
+                        istrue: false,
+                    },
+                ],
+                checked:true,
+                oo: false,
+                qx: false,
+                istrue: false,
+                iptval: "",
+                myitem: null,
+                dblafter: 'haha',
+                toggle: '',
+                val: '',
+                val1: '',
+                ary: [{
+                        id: 0,
+                        txt: '哈哈',
+                        checked: false,
+                        onoff: false
+                    },
+                    {
+                        id: 1,
+                        txt: '呵呵',
+                        checked: false,
+                        onoff: false
+                    }
+                ]
+            },
+            methods: {
+                //==>全选按钮-按钮加selected
+                sele(i) {
+                    this.val1 = this.btns[i].btntxt;
+                    this.btns.forEach((ele) => {
+                        ele.istrue = false
+                    })
+                    this.btns[i].istrue = true
+                },
+                //=>点击添加数据
+                addAry() {
+                    if (this.val == '') return;
+                    this.ary.unshift({
+                        id:+new Date(),
+                        txt: this.val,
+                        checked: false,
+                        onoff: false
+                    });
+                    this.val = '';
+                },
+                all(ev) {
+                    this.ary.forEach(element => {
+                        element.checked = !this.qx;                 
+                    });
+                },
+                //双击事件
+                change(item, index) {
+                    this.myitem = item;
+                    this.dblafter = item.txt;
+                    //聚焦全选
+                    this.$nextTick(() => {
+                        this.$refs.edits.forEach((ele) => {
+                            ele.select();
+                        });
+                    });
+                },
+                myenter(item, index) {
+                    if (this.oo == true) {
+                        this.oo = false
+                        return
+                    }
+                    if(!this.dblafter){
+                        this.myitem = null;
+                    }else{
+                    this.ary[index].txt = this.dblafter;
+                    this.myitem = null;
+                }
+                },
+                myesc() {
+                    this.oo = true;
+                    this.myitem = null;
+                }
+            },
+            watch: {
+                ary: {
+                    handler(val, oldVal) {
+                         console.log(1);      
+                        this.qx = this.ary.every(item => item.checked == true)
+                        console.log(this.qx)               
+                    },             
+                deep: true
+                },            
+            },
+            computed: {
+                wxz() {
+                    return this.ary.filter(item => !item.checked).length
+                },
+                setAry() {
+                    const {
+                        val1,
+                        ary
+                    } = this;
+                    return ary.filter(item => {
+                        switch (val1) {
+                            case '全部':
+                                return item;
+                            case '已选中':
+                                return item.checked;
+                            case '未选中':
+                                return !item.checked;
+                            default:
+                                return item;
+                        }
+                    })
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

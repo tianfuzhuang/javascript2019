@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app" @click="pfn">
+         {{num}}
+        <haha @child="pfn" :nn="num"></haha>
+    </div>
+    <template id="haha">
+        <div>
+            <button @click="add">{{nn}}</button>
+        </div>
+    </template>
+    <script>
+        const haha = {
+            template: "#haha",
+            props:['nn'],
+            data() {
+                return {
+                    num: 1
+                }
+            },
+            methods: {
+                add(){
+                    this.$emit('child')
+                }
+            },
+        }
+        Vue.component('haha', haha)
+        new Vue({
+            el: "#app",
+            data: {
+                num: 0
+            },
+            methods: {
+              pfn(){
+                   this.num++
+               }
+            },
+        })
+    </script>
+
+
+
+</body>
+
+</html>

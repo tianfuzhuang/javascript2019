@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+<style>
+    input {
+        width: 100px;
+        height: 50px;
+    }
+</style>
+
+<body>
+
+    <div id="box">
+        <input 
+        type="text"
+        value="haha"
+        v-focus
+        >
+        
+    </div>
+
+
+    <script src="./vue.js"></script>
+
+
+    <script>
+
+    Vue.directive('focus',{
+        inserted(el){
+          el.select();
+          el.focus();
+        }  
+    })
+
+
+
+     new Vue({
+         el:'#box',
+
+     })
+
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
