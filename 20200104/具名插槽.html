@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ppa>
+          <div slot="brother">1</div>
+          <div slot="little">2</div>
+          <div slot="big">3</div>
+
+        </ppa>
+    </div>
+ 
+    <template id="ppa">
+        <div>
+        <slot name='big'>
+         <p>我是大哥</p>
+        </slot>
+        <slot name='brother'>
+         <p>我是兄弟</p>
+        </slot>
+        <slot name='little'>
+         <p>我是小弟</p>
+        </slot>
+       </div> 
+    </template>
+
+<script>
+const ppa = {
+    template:'#ppa',
+}
+new Vue({
+    el:'#app',
+    components: {
+        ppa
+    }
+})
+</script>
+
+</body>
+</html>

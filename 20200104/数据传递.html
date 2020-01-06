@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <haha :nuss="num"></haha>
+    </div>
+    <template id="haha" >
+        <div @click="add">111</div>
+    </template>
+<script>
+
+const haha = {
+    template:"#haha",
+    props:['nuss'],
+    data(){
+        return{
+            cc : 0
+        }
+    },
+    methods: {
+        add(){
+            console.log(this.nuss);
+            
+            console.log(this.$parent.num);
+            console.log(this.ary2);
+            
+            
+        },
+        
+    },inject:['ary2']
+}
+
+new Vue({
+    el:'#box',
+    data:{
+        num:1
+    },
+    components:{
+        haha
+    },
+    provide:{
+        ary2:[123]
+    }
+    
+
+})
+
+</script>
+
+
+</body>
+</html>

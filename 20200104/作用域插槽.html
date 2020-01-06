@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <haha :cnum="ary" v-slot:cdata="tmdata">
+           <p>我的名字叫:{{tmdata.nn}}</p>
+           <h5>我的年龄是:{{tmdata.age}}</h5>
+        </haha>
+    </div>
+   <template id="haha">
+      <div>
+          <ul>
+              <li v-for="(item, index) in cnum" :key="cnum.id"
+              >
+             <slot 
+             name="cdata"
+             :nn='item.name'
+             :age="item.age"
+             ></slot>
+            
+            </li>
+          </ul>
+
+
+      </div>
+   </template>
+   
+   
+   
+   
+   <script>
+      const haha = {
+          template:'#haha',
+          props:['cnum']
+
+      }
+  
+
+
+
+        new Vue({
+            el: "#app",
+            data:{
+                ary:
+                     [{
+                    name: '小ming',
+                    age: 22,
+                    id:1
+                },
+                {
+                    name: '韩梅梅',
+                    age: 25,
+                    id:2
+                },
+                {
+                    name: '啦啦啦',
+                    age: 28,
+                    id:3
+                }
+            ]
+          },
+          components:{
+              haha
+          }
+        })
+    
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .haha{
+        width: 100px;
+        height: 100px;
+        background-color: brown;
+        position: absolute;
+        top: 20px;
+        left: 2000px;
+    }
+/* .donghua-enter,.donghua-leave-to{
+    opacity: 0;
+}
+.donghua-enter-active,.donghua-leave-active{
+    transition:1s;
+    
+} */
+/* .donghua-enter-to,.donghua-leave{
+    opacity: 1;
+} */
+
+
+
+
+/* .donghua-enter{
+    
+} */
+.donghua-enter-active{
+    transition:1s;
+    
+} 
+ .donghua-enter-to{
+    opacity: 1;
+    left: 0px;
+}
+
+
+
+
+    </style>
+   <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <button @click='toggle=true'>点我</button>
+       
+       <transition name="donghua">
+       <div class="haha" v-show="toggle"></div>
+       </transition>
+       
+
+    </div>
+      
+    <script>
+
+    new Vue({
+        el:"#app",
+        data:{
+            toggle:false
+
+        },
+        methods: {
+            
+        },
+    })
+    </script>
+</body>
+</html>

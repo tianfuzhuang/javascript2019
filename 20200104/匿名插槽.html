@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.tme{
+    width: 300px;
+    height: 300px;
+    background: brown;
+}
+.sss{
+    width: 300px;
+    height: 300px;
+    background: chartreuse;
+}
+
+</style>
+
+
+</head>
+<body>
+  <!-- 
+      插槽:
+      在开发中写什么结构就是什么结构,有点久时固定通用,缺点就是不够灵活
+
+      插槽就是为了解决不灵活的问题,就能够自地沟油一些组件,能够替换之前默认的配置
+
+      匿名插槽:
+      子组件中定义slot
+      父组件中给调用的子组件双标签内填入结构 这个时候slot就被填入结构覆盖
+   -->  
+<div id="app">
+<haha>
+    <div class="sss"></div>
+</haha>
+
+</div>
+<template id="haha">
+    <slot>
+    <div class="tme"></div>
+    </slot>
+</template>
+
+
+
+
+
+<script src="./vue.js"></script>
+<script>
+const haha = {
+    template:'#haha',
+    data(){
+        return {
+            cc:33
+        }
+    }
+}
+
+
+
+new Vue({
+    el:'#app',
+    data:{
+        num:1
+    },
+    components:{
+        haha
+    }
+})
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
