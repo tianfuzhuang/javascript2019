@@ -1,0 +1,73 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+     <script src="./vue.js"></script>
+ </head>
+ <div id="app">
+   {{ary}}
+   <button @click="add">点我增加数据</button>
+    <ul id="haha">
+      <li v-for="(item, index) in ary" :key="index">{{item}}</li>
+    </ul>
+ </div>
+ <body>
+     <script>
+     new Vue({
+      el:'#app',
+      data:{
+          ary:[
+              '今天','天气','不错','风和日丽'
+          ]
+      },
+      methods: {
+          add(){
+          this.ary.push('我们下午没有课')
+        }
+      },
+      //创建之前,初始化前拿不到数据
+      beforeCreate() {
+          console.log(this.ary); 
+      },
+      //初始化后 可以拿到data中的数据
+      created() {
+        console.log(this.ary);
+      },
+      //如果没有挂载元素,就没有下面的生命周期
+
+      //渲染之前
+     beforeMount() {
+        console.log('渲染之前',haha.children)
+     },
+     mounted() {
+        console.log('渲染之后',haha.children)
+     },
+
+     beforeUpdate() {
+            console.log('数据更新之前',haha.children);
+        },
+     update() {
+            console.log('数据更新之后',haha.children);
+        },
+
+        beforeDestroy() {
+            console.log('销毁之前')
+        },
+        destroyed(){
+            console.log('销毁之后');
+            clearInterval(this.timer);
+        }
+        //销毁之后 ，可以把一些事件、定时器...解除
+
+
+
+
+     });
+</script>
+
+
+ </body>
+ </html>
